@@ -3,13 +3,12 @@ import { useMoralis } from "react-moralis";
 import "./Home.css";
 import { toast } from "react-toastify";
 import CustomDropzone from "../../components/CustomDropzone";
+import useHttp from "../../hooks/useHttp";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
-console.log("backendUrl",backendUrl)
 const Home = () => {
   const { authenticate, logout, isAuthenticated, user, authError } =
     useMoralis();
-
+  const {error,isLoading,request} = useHttp();
   const [fileInfo, setFileInfo] = useState([]);
 
   useEffect(() => {
@@ -23,9 +22,39 @@ const Home = () => {
     arrAux.splice(index,1)
     setFileInfo(arrAux)
   }
+  const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
 
-  const upload = () => {
 
+  const upload = async () => {
+    let collection = [];
+    let base64;
+    for(let i = 0; i < fileInfo.length; i++){
+      base64 = await toBase64(fileInfo[i].file);
+      collection.push({
+        file: base64,
+        name: fileInfo[i].name,
+        description: fileInfo[i].description
+      })
+    }
+    let configRequest = {
+      type: "post",
+      endpoint: "nft/create-nft",
+      data: {
+        collection: collection
+      }
+    }
+    const response = await request(configRequest);
+  }
+
+  const handleChange = (e, index) => {
+    let arrAux = [...fileInfo];
+    arrAux[index][e.target.name] = e.target.value;
+    setFileInfo(arrAux);
   }
 
   return (
@@ -45,9 +74,9 @@ const Home = () => {
               <img className="w-100" src={file.file.preview} alt="file" />
             </div>
             <div className="w-70">
-              <input className="w-100" value={file.name} />
+              <input className="w-100" name="name" onChange={(e) => handleChange(e, index)} value={file.name} />
               <br /><br />
-              <textarea className="w-100" rows={6} placeholder="Description..."></textarea>
+              <textarea className="w-100" name="description" onChange={(e) => handleChange(e, index)} rows={6} placeholder="Description..."></textarea>
             </div>
             <div className="w-5">
               <button onClick={() => removeFile(index)}>Eliminar</button>

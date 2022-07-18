@@ -21,7 +21,7 @@ const team = [
   { img: Leo, name: "Leo", role: "Frontend Developer" },
   { img: Crome, name: "Crome", role: "Smart Contract Developer" },
   { img: Wayner, name: "Wayner", role: "Backend Developer" },
-  { img: Mario, name: "Mario", role: "Web/Mobile Designer" },
+  { img: Mario, name: "Mario", role: "UI/UX Designer" },
 ];
 
 const Home = () => {

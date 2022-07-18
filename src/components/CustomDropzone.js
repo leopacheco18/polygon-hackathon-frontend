@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-const CustomDropzone = ({setFileInfo, fileInfo}) => {
+const CustomDropzone = ({setFileInfo}) => {
   const onDrop = useCallback((acceptedFiles) => {
-    let arrAux = [...fileInfo];
+    let arrAux = [];
     acceptedFiles.forEach(file => {
       arrAux.push({
         file: Object.assign(file, {
@@ -10,11 +10,10 @@ const CustomDropzone = ({setFileInfo, fileInfo}) => {
         }),
         name: file.name,
       })
-      console.log(arrAux);
       setFileInfo(arrAux);
     });
 
-  }, []);
+  }, [setFileInfo]);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (

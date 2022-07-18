@@ -1,38 +1,13 @@
-import './App.css';
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import "./App.css";
 import { useMoralis } from "react-moralis";
-import Home from './pages/home/Home';
+import Home from "./pages/home/Home";
+import LayoutOwn from "./pages/layout/LayoutOwn";
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+
 function App() {
-  
-  const { isAuthenticated } =
-    useMoralis();
+  const { isAuthenticated } = useMoralis();
 
-
-
-
-  return (
-   <>
-   {isAuthenticated ?
-    <Router>
-    
-
-    {/* A <Switch> looks through its children <Route>s and
-        renders the first one that matches the current URL. */}
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-</Router>
-   :
-   <Home />
-   
-   }
-   
-   </>
-  );
+  return <>{isAuthenticated ? <LayoutOwn /> : <Home />}</>;
 }
 
 export default App;

@@ -1,0 +1,19 @@
+
+.sider{
+    min-height: 100vh;
+  }
+  
+  .header, .sider{
+    color:  #EEEEEE !important;
+    background: #222831 !important;
+  
+  }
+  .header{
+    
+    border-left: 1px solid #EEEEEE;
+  }
+  
+  .sider > .ant-layout-sider-trigger{
+    background-color: inherit !important;
+    border-top: 1px solid #EEEEEE;
+  }

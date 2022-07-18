@@ -74,6 +74,10 @@ body::-webkit-scrollbar-thumb {
   flex-direction : column;
 }
 
+.align-start{
+  align-items: flex-start;
+}
+
 .justify-end {
   justify-content: end;
 }

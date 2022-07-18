@@ -6,6 +6,7 @@ import './index.css'
 const NewestNFT = ({ nfts }) => {
 
     const [newestNFTs, setNewestNFTs] = useState(nfts)
+    const [hoverIndex, setHoverIndex] = useState(1);
 
     useEffect(() => {
         setNewestNFTs(nfts)
@@ -13,7 +14,7 @@ const NewestNFT = ({ nfts }) => {
 
     const renderedNewestNFT = Object.values(newestNFTs).map((nft, i) => {
         return (
-            <div className="w-25 container-nft">
+            <div className="w-25 container-nft" onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px')}}>
                 <div className="w-100">
                     <img src={nft?.img} alt="img-nfg" className="w-100 image-nft" />
                 </div>
@@ -37,7 +38,7 @@ const NewestNFT = ({ nfts }) => {
                     </div>
                 </div>
                 <div className="card-nft-status">
-                    <button className={`w-100 card-button-nft ${nft.status ? 'button-nft-available' : 'button-nft-unavailable'}`}>
+                    <button className={`w-100 card-button-nft ${nft.status ? 'button-nft-available' : 'button-nft-unavailable'} ${hoverIndex === i && 'card-button-nft-show'}`} >
                         {nft.status ? 'Buy Now' : 'Not available'}
                     </button>
                 </div>
@@ -54,7 +55,7 @@ const NewestNFT = ({ nfts }) => {
                 <div>
 
                 </div>
-                <div className="d-flex flex-wrap justify-space-evenly">
+                <div className="d-flex flex-wrap justify-space-evenly align-start">
                     {renderedNewestNFT}
                 </div>
             </div>

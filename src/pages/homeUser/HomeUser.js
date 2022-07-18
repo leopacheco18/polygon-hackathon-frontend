@@ -15,7 +15,7 @@ import LogoFoundationInclusionProblem from "../../assets/homeUser/logo-foundatio
 const nfts = [
   { img: SpaceMan, title: "Spaceman", price: 30, logo_price: Amount, logo_foundation: LogoFoundationSpaceMan, name_foundation: 'Astrology Foundation', status: true },
   { img: CreativeCar, title: "Creative Car", price: 55, logo_price: Amount, logo_foundation: LogoFoundationCreativeCar, name_foundation: 'Cars Population Charity', status: false },
-  { img: InclusionProblem, title: "Inclusion Problem", price: 185, logo_price: Amount, logo_foundation: LogoFoundationInclusionProblem, name_foundation: 'Social Inclusion Causes', status: true }
+  { img: InclusionProblem, title: "Inclusion Problem", price: 185, logo_price: Amount, logo_foundation: LogoFoundationInclusionProblem, name_foundation: 'Social Inclusion Causes', status: true },
 ];
 
 const HomeUser = () => {

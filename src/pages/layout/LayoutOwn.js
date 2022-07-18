@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import HomeUser from "../homeUser/HomeUser";
 import { useMoralis } from "react-moralis";
 import DarkButton from "../../components/global/DarkButton";
+import "./LayoutOwn.css"
 
 const { Header, Sider, Content } = Layout;
 const LayoutOwn = () => {

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import DarkButton from "../../global/DarkButton";
+import TextWithTopLine from "../../global/TextWithTopLine";
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 /* Importing the css file. */
 import './index.css'
@@ -6,7 +9,7 @@ import './index.css'
 const NewestNFT = ({ nfts }) => {
 
     const [newestNFTs, setNewestNFTs] = useState(nfts)
-    const [hoverIndex, setHoverIndex] = useState(1);
+    const [hoverIndex, setHoverIndex] = useState(-1);
 
     useEffect(() => {
         setNewestNFTs(nfts)
@@ -14,7 +17,7 @@ const NewestNFT = ({ nfts }) => {
 
     const renderedNewestNFT = Object.values(newestNFTs).map((nft, i) => {
         return (
-            <div className="w-25 container-nft" onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px')}}>
+            <div className="w-100 container-nft" onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px')}}>
                 <div className="w-100">
                     <img src={nft?.img} alt="img-nfg" className="w-100 image-nft" />
                 </div>
@@ -48,14 +51,13 @@ const NewestNFT = ({ nfts }) => {
 
     return (
         <div className="container-nfs">
-            <div>
-                Newest NFT´s
-            </div>
+            <TextWithTopLine padding={'1rem 0'} fontSize="1.25rem" fontWeight={600} >Newest NFT´s</TextWithTopLine>
             <div className="card-nfts">
-                <div>
-
+                <div className="d-flex card-nfts-pagination w-95 ">
+                    <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"}> <LeftOutlined /> </DarkButton>
+                    <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"}> <RightOutlined /> </DarkButton>
                 </div>
-                <div className="d-flex flex-wrap justify-space-evenly align-start">
+                <div className="w-95 container-ntfs-list d-flex  justify-space-between align-start">
                     {renderedNewestNFT}
                 </div>
             </div>

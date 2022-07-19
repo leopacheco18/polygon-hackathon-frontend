@@ -2,8 +2,9 @@
     width : 100%;
     background-color : white;
     border-radius : 5px;
-    padding : 20px 0;
-    padding-bottom : 40px;
+
+    padding : 15px 0 15px 2.5vw;
+    
 }
 
 .container-nft{
@@ -88,4 +89,14 @@
 
 .card-nft-status{
     height: 0;
+}
+
+.card-nfts-pagination{
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+.container-ntfs-list{
+    gap: 50px;
+    padding-bottom: 30px;
 }

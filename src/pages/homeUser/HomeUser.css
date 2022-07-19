@@ -1,6 +1,32 @@
-
 .container{
-    padding: 0vw 2vw;
+    padding: 1rem 2vw 0;
     background-color : #E5E5E5;
     height : 100%;
+}
+
+.bg-home-user{
+    height: 25vh;
+    border-radius: 30px ;
+    margin-bottom: 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.bg-home-content{
+    position: absolute;
+    right: 0;
+    height: 25vh;
+    width: 25%;
+    z-index: 1;
+    background-color: #222831;
+}
+
+.bg-home-diagonal{
+    
+    position: absolute;
+    right: 25%;
+    z-index: 1;
+  border-bottom: 25vh solid #222831; /* 40px height (20+20) */
+  border-left: 10vw solid transparent;
 }

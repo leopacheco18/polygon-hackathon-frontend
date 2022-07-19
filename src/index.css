@@ -19,6 +19,11 @@ body::-webkit-scrollbar-thumb {
 .w-10 {
   width: 10%;
 }
+
+.w-15{
+  width: 15%;
+}
+
 .w-20 {
   width: 20%;
 }
@@ -46,8 +51,16 @@ body::-webkit-scrollbar-thumb {
 .w-80 {
   width: 80%;
 }
+
+.w-85{
+  width: 85%;
+}
+
 .w-90 {
   width: 90%;
+}
+.w-95 {
+  width: 95%;
 }
 .w-100 {
   width: 100%;
@@ -55,6 +68,17 @@ body::-webkit-scrollbar-thumb {
 
 .mb-0 {
   margin-bottom : 0px;
+}
+
+.text-top-border{
+    border-top: 5px solid #71CED3;
+    width: fit-content;
+    padding-top: 2rem;
+}
+
+.text-top-border > h2{
+    font-weight: 400;
+    font-size: xx-large;
 }
 
 
@@ -82,6 +106,10 @@ body::-webkit-scrollbar-thumb {
   justify-content: end;
 }
 
+.justify-center {
+  justify-content : center;
+}
+
 .justify-between {
   justify-content : between;
 }
@@ -92,6 +120,14 @@ body::-webkit-scrollbar-thumb {
 
 .justify-space-between{
   justify-content : space-between
+}
+
+.align-center : {
+  align-items :center;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
 }
 
 .text-right {

@@ -1,0 +1,270 @@
+.home-container{
+    width: calc(100% - 60px);
+    position: relative;
+    padding: 30px;
+}
+
+.logo-container{
+    padding-left: 5vw;
+}
+
+.home-card{
+    margin-top: 2rem;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(0,173,181,1) 0%,  rgba(244,244,244,1) 100%);
+    border-radius: 48px 48px 300px 48px;
+}
+
+.home-card-image{
+    position: relative;
+    bottom: 0;
+    height: 75vh;
+    
+}
+.home-card-image > img{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.home-card-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 5vw;
+    color: white;
+}
+
+.home-card-content > h1{
+    font-size: 5rem;
+    font-weight: 600;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.home-card-content > p, .home-overview-content  > p {
+    margin-top: 4rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.home-metamask-logo{
+    margin-right: 15px;
+}
+
+.home-metamask-button{
+    padding-right: 5vw;
+}
+
+.home-overview, .our-team-container{
+    margin-top: 10rem;
+    justify-content: center;
+}
+.our-team-container{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.home-overview-content{
+    flex-direction: column;
+}
+
+
+.team-card-container{
+    background-color: #393E46;
+    border-radius: 20px;
+    padding: 3rem 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.team-card-container > h3{
+    color: white;
+}
+
+.team-card-container:hover{
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+.team-card-container > img {
+    border-radius: 50%;
+    box-shadow: 4px 8px 2px rgba(0, 0, 0, 0.5);
+}
+
+.team-card-list{
+    gap: 3%;
+}
+
+.home-footer{
+    margin-top: 2rem;
+    background-color: #222831;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #EEEEEE;
+}
+
+.home-files-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-nfts{
+    width : 100%;
+    background-color : white;
+    border-radius : 5px;
+
+    padding : 15px 0 15px 2.5vw;
+    
+}
+
+.container-nft{
+    background-color: #222831;
+    cursor: pointer;
+    flex-wrap :wrap; 
+}
+
+.image-nft{
+    border-top-left-radius : 10px;
+    border-top-right-radius : 10px;
+}
+
+.info-card-foundation{
+    padding : 20px 20px 0px 20px;
+
+}
+
+.info-card-foundation-details{
+    border-bottom: 1px solid #393E46;
+    margin-bottom : 15px;
+}
+
+.card-nft-title {
+    font-size : 15px;
+    color : #FFFFFF;
+    font-weight: 500;
+}
+
+.card-nft-amount{
+    color : #FFFFFF;
+    margin-bottom : 6px;
+    align-items: center;
+    font-weight : 200;
+    margin-top : 6px;
+    margin-bottom : 6px;
+    gap: 5px;
+}
+
+.card-foundation-location{
+    
+}
+
+.card-foundation-location-logo{
+    color : #00ADB5;
+    margin-right : 5px;
+    font-size : 25px;
+}
+
+.card-foundation-location-name{
+    color : #FFFFFF;
+    margin-bottom : 6px;
+    font-size: 12px;
+    align-items: center;
+    font-weight : 200;
+    gap: 5px;
+}
+
+.card-foundation-button{
+    border: 1px solid #00ADB5;
+    border-radius : 10px;
+    background-color : #222831;
+    color: #FFFFFF; 
+    width : 90%;
+    margin-bottom: 20px;
+    font-size : 12px;
+    padding: 5px 0px;
+}
+
+.card-nft-amount > p {
+    margin: 0;
+}
+
+.card-nft-image-logo-amount {
+    width : 100%
+}
+
+.card-nft-image-logo-foundation {
+    width : 10%;
+    margin-right :10px;
+}
+
+.card-nft-foundation {
+    border-top : 1px solid #393E46;
+    padding : 6px 0 10px;
+}
+
+.card-nft-name-foundation {
+    font-size : 15px;
+    color : #FFFFFF;
+    font-weight: 200;
+}
+
+.card-button-nft {
+    border : none;
+    color : white;
+    border-bottom-left-radius : 10px;
+    border-bottom-right-radius : 10px;
+    transition: all 0.5s;
+}
+
+.button-nft-available {
+    background-color : #00ADB5;
+}
+
+.button-nft-unavailable {
+    background-color : red;
+}
+
+.card-button-nft{
+    height: 0;
+    font-size: 0;
+    padding: 0;
+    transition: all 0.5s;
+}
+
+.card-button-nft-show{
+    height: fit-content !important;
+    font-size: 0.75rem !important;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.card-nft-status{
+    height: 0;
+}
+
+.card-nfts-pagination{
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+.container-ntfs-list{
+    gap: 50px;
+    padding-bottom: 30px;
+}

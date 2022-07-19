@@ -15,6 +15,7 @@ import Crome from "./../../assets/home/Crome.png";
 import Wayner from "./../../assets/home/Wayner.png";
 import Mario from "./../../assets/home/Mario.png";
 import TeamCard from "../../components/home/TeamCard";
+import TextWithTopLine from "../../components/global/TextWithTopLine";
 
 const team = [
   { img: Altair, name: "Altair", role: "Mobile Developer" },
@@ -39,10 +40,10 @@ const Home = () => {
    <>
     <div className="home-container">
       <div className="d-flex">
-        <div className="w-10 logo-container">
+        <div className="w-15 logo-container">
           <Logo />
         </div>
-        <div className="w-90 text-right d-flex justify-end home-metamask-button">
+        <div className="w-85 text-right d-flex justify-end home-metamask-button">
           <DarkButton onClick={authenticate}>
             <img
               alt="metamask-logo"
@@ -74,9 +75,7 @@ const Home = () => {
           <img alt="home-man" src={homeMan} className="w-100" />
         </div>
         <div className="w-40 d-flex home-overview-content">
-          <div className="home-overview-border">
-            <h2>Overview</h2>
-          </div>
+         <TextWithTopLine>Overview</TextWithTopLine>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
             turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
@@ -89,9 +88,7 @@ const Home = () => {
         </div>
       </div>
       <div className="our-team-container">
-        <div className="home-overview-border">
-          <h2>Our Team</h2>
-        </div>
+        <TextWithTopLine>Our Team</TextWithTopLine>
         <div className="d-flex position-relative team-card-list">
           {team.map((item, index) => (
             <TeamCard {...item} isTop={index % 2 === 0} />

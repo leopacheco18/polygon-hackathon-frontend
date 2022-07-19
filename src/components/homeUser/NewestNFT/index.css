@@ -2,10 +2,10 @@
     width : 100%;
     background-color : white;
     border-radius : 5px;
+
     padding : 15px 0 15px 2.5vw;
     
 }
-
 
 .container-nft{
     background-color: #222831;
@@ -98,4 +98,5 @@
 }
 .container-ntfs-list{
     gap: 50px;
+    padding-bottom: 30px;
 }

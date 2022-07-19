@@ -1,6 +1,5 @@
 .container{
     padding: 1rem 2vw 0;
-    background-color : #E5E5E5;
     height : 100%;
 }
 
@@ -20,6 +19,7 @@
     width: 25%;
     z-index: 1;
     background-color: #222831;
+    border-radius: 0 30px 30px 0;
 }
 
 .bg-home-diagonal{
@@ -29,4 +29,19 @@
     z-index: 1;
   border-bottom: 25vh solid #222831; /* 40px height (20+20) */
   border-left: 10vw solid transparent;
+}
+
+.bg-home-content{
+    text-align: right;
+    padding-right: 2.5%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.bg-home-content > h2{
+    color: white;
+    font-weight: 200;
+    font-size: 4vh;
+    margin-bottom: 0;
 }

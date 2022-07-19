@@ -17,3 +17,20 @@
     background-color: inherit !important;
     border-top: 1px solid #EEEEEE;
   }
+
+  .max-height{
+    min-height: calc(100vh - 64px);
+    max-height: calc(100vh - 64px);
+    padding-bottom: 3rem;
+    overflow-y: auto;
+    background-color : #E5E5E5;
+  }
+
+  .max-height::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .max-height::-webkit-scrollbar-thumb {
+    background: #222831;
+  }

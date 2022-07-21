@@ -1,92 +1,164 @@
+.sider {
+  min-height: 100vh;
+}
 
-.sider{
-    min-height: 100vh;
-  }
-  
-  .header, .sider{
-    color:  #EEEEEE !important;
-    background: #222831 !important;
-  
-  }
-  .header{
-    
-    border-left: 1px solid #EEEEEE;
-  }
-  
-  .sider > .ant-layout-sider-trigger{
-    background-color: inherit !important;
-    border-top: 1px solid #EEEEEE;
-  }
+.header,
+.sider {
+  color: #eeeeee !important;
+  background: #222831 !important;
+}
+.header {
+  border-left: 1px solid #eeeeee;
+}
 
-  .max-height{
-    min-height: calc(100vh - 64px);
-    max-height: calc(100vh - 64px);
-    padding-bottom: 3rem;
-    overflow-y: auto;
-    background-color : #E5E5E5;
-  }
+.sider > .ant-layout-sider-trigger {
+  background-color: inherit !important;
+  border-top: 1px solid #eeeeee;
+}
 
-  .max-height::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  .max-height::-webkit-scrollbar-thumb {
-    background: #222831;
-  }
-  .route { 
-    color : white;
-    margin : 10px 0px;
-    padding: 10px;
-  }
+.max-height {
+  min-height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px);
+  padding-bottom: 3rem;
+  overflow-y: auto;
+  background-color: #e5e5e5;
+}
 
-  .donaty-logos{
-    margin : 30px 0px 30px 0px;
-    align-items: center;
-  }
+.max-height::-webkit-scrollbar {
+  width: 10px;
+}
 
-  .route-logo {
-    margin-right : 5px;
-  }
+/* Track */
+.max-height::-webkit-scrollbar-thumb {
+  background: #222831;
+}
+.route {
+  color: white;
+  margin: 10px 0px;
+  padding: 10px;
+}
 
-  .route {
-    color : white;
-    margin : 10px 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+.donaty-logos {
+  margin: 30px 0px 30px 0px;
+  align-items: center;
+}
 
-  .route:hover { 
-    color : #00AFB7;
-    margin : 10px 0px;
-    background-color : #393E46;
-    border-radius : 20px;
-  }
+.route-logo {
+  margin-right: 5px;
+}
 
-  .route-border {
-    border-top : 1px solid #393E46;
-    border-bottom : 1px solid #393E46;
-    margin-bottom : 30px;
-    margin-bottom : 30px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
+.route {
+  color: white;
+  margin: 10px 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
-  .route-border:hover { 
-    border-top : 1px solid #393E46;
-    border-bottom : 1px solid #393E46;
-    margin-bottom : 30px;
-    margin-bottom : 30px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
+.route:hover {
+  color: #00afb7;
+  margin: 10px 0px;
+  background-color: #393e46;
+  border-radius: 20px;
+}
 
-  .title {
-    font-size : 20px;
-    font-weight : 400;
-  }
+.route-active {
+  color: #00afb7;
+  margin: 10px 0px;
+  background-color: #393e46;
+  border-radius: 20px;
+}
 
-  .rights-reserved {
-    font-size : 9px;
-    color : #EEEEEE;
-  }
+.route-border {
+  border-top: 1px solid #393e46;
+  border-bottom: 1px solid #393e46;
+  margin-bottom: 30px;
+  margin-bottom: 30px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.route-border:hover {
+  border-top: 1px solid #393e46;
+  border-bottom: 1px solid #393e46;
+  margin-bottom: 30px;
+  margin-bottom: 30px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.rights-reserved {
+  font-size: 9px;
+  color: #eeeeee;
+}
+
+.modal-foundation-container > .ant-modal-content {
+  background-color: #222831;
+  border-radius: 10px;
+}
+.modal-foundation-container {
+  width: 70vw !important;
+}
+
+.modal-foundation-container .ant-modal-body {
+  padding: 0 !important;
+}
+
+.modal-foundation-image {
+  background: url("../../assets/layout/man_laptop.png");
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 0px 10px 10px 0px;
+  height: 75vh;
+  background-position: center
+}
+
+.modal-foundation-close{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #EEEEEE;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-foundation-form{
+  width: 70%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-foundation-form > img {
+  width: 12.5vh;
+}
+
+.modal-foundation-form  > h3{
+  font-size: 1.35rem;
+  color: #EEEEEE;
+  font-weight: 600;
+}
+
+.modal-foundation-form  span, .modal-foundation-form input {
+  background-color: #393E46;
+  border: none;
+  color: #D9D9D9;
+  border-radius: 10px;
+  font-size: 1.35rem;
+}
+
+.modal-foundation-form input{
+  margin-left: 10px;
+}
+
+.modal-foundation-form .ant-input-affix-wrapper{
+  border: none;
+  border-color: transparent !important;
+  border-right-width: 0 !important;
+  box-shadow: unset !important;
+}

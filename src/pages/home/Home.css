@@ -18,8 +18,7 @@
 .home-card-image{
     position: relative;
     bottom: 0;
-    height: 75vh;
-    
+    min-height: 75vh;
 }
 .home-card-image > img{
     position: absolute;

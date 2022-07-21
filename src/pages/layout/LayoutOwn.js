@@ -58,7 +58,7 @@ const LayoutOwn = () => {
         </div>
         <div>
           {authProtectedRoutes.map((route, index, row) => {
-            return (
+            return route.isAvailableInMenu && (
               <Link
                 key={index}
                 to={route.path}

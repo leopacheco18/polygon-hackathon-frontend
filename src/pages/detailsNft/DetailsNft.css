@@ -1,0 +1,125 @@
+.card-details-nft-container-image{
+    padding : 10px;
+}
+
+.card-details-nft{
+    width : 100%;
+    background-color : white;
+    border-radius : 5px;
+    //padding : 15px 0 15px 2.5vw;
+    padding : 20px;
+}
+
+.container-nft-profile-details{
+    background-color : #222831;
+    color : white;
+    border-radius : 5px;
+    margin-bottom : 10px;
+}
+
+.container-nft-profile-principal-info{
+    padding : 15px;
+    align-items: center;
+}
+
+.container-nft-profile-title{
+    font-size : 16px;
+    font-weight : 500;
+}
+
+.owned-container-info{
+    font-weight : 300;
+}
+
+.owned-nft{
+    color : #00ADB5;
+    font-weight : 500;
+}
+
+.image-logo-nft{
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px
+}
+
+.container-nft-description{
+    background-color : #222831;
+    color : white;
+    border-radius : 5px;
+    margin-bottom : 10px;
+    padding : 20px;
+}
+
+.card-description-nft {
+    padding : 10px;
+}
+
+.container-nft-description-title {
+    padding-bottom : 10px;
+    border-bottom : 1px solid #393E46;
+}
+
+.container-nft-description-title-icon{
+    font-size : 22px;
+    margin-right : 5px;
+}
+
+.nft-description-title{
+    font-size : 16px;
+    font-weight : 500;
+}
+
+.container-nft-description-into {
+    margin-top : 10px;
+    text-align: justify;
+    font-size: 12px;
+    font-weight : 300;
+}
+
+.card-price-nft {
+    padding : 10px;
+}
+
+.container-nft-price{
+    background-color : #222831;
+    color : white;
+    border-radius : 5px;
+    margin-bottom : 10px;
+    padding : 20px;
+}
+
+.container-nft-price-title{
+    padding-bottom : 10px;
+    border-bottom : 1px solid #393E46;
+}
+
+.container-nft-price-title-icon{
+    font-size : 22px;
+    margin-right : 5px;
+}
+
+.nft-price-title{
+    font-size : 16px;
+    font-weight : 500;
+}
+
+.container-nft-price-actual-price{
+    margin-top : 10px;
+}
+
+.nft-price-actual-price-image{
+    margin-right: 5px;
+}
+
+.container-nft-price-button{
+    margin-top : 20px;
+}
+
+.nft-price-button{
+    border: 1px solid #00ADB5;
+    border-radius : 10px;
+    background-color : #222831;
+    color: #FFFFFF; 
+    width : 90%;
+    font-size : 12px;
+    padding: 5px 0px;
+}

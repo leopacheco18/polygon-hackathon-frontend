@@ -2,7 +2,7 @@ import React from "react";
 
 import { AiFillFileText } from "react-icons/ai";
 
-const Description = ({ img, title, owned }) => {
+const Description = ({ profile }) => {
 
     return (
         <div className="w-100 container-nft-description h-100" >
@@ -13,7 +13,7 @@ const Description = ({ img, title, owned }) => {
                 </div>
             </div>
             <div className="container-nft-description-into">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan.
+                {profile.description}
             </div>
         </div>
     )

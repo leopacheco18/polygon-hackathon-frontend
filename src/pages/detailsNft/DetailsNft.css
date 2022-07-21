@@ -123,3 +123,88 @@
     font-size : 12px;
     padding: 5px 0px;
 }
+
+.container-nft-cause{
+    background-color : #222831;
+    color : white;
+    border-radius : 5px;
+    padding : 20px;
+}
+
+.container-nft-cause-title{
+    padding-bottom : 10px;
+    border-bottom : 1px solid #393E46;   
+}
+
+.container-nft-cause-title-icon{
+    font-size : 22px;
+    margin-right : 5px;
+}
+
+.nft-cause-title{
+    font-size : 16px;
+    font-weight : 500;   
+}
+
+.container-nft-cause-into{
+    margin-top : 10px;
+    text-align: justify;
+    font-size: 12px;
+    font-weight : 300;
+}
+
+.card-cause-nft {
+    padding : 10px;
+}
+
+.container-nft-cause-foundation{
+    margin-top : 10px;
+}
+
+.nft-cause-foundation-logo{
+    margin-right : 10px;
+}
+
+.nft-cause-foundation-name{
+    font-size : 16px;
+    font-weight : 200;  
+}
+
+.card-activity-nft{
+    padding : 10px;
+}
+
+.container-nft-activity{
+    background-color : #222831;
+    color : white;
+    border-radius : 5px;
+    padding : 20px;
+}
+
+.container-nft-activity-title{
+    padding-bottom : 10px;
+    border-bottom : 1px solid #393E46;  
+}
+
+.container-nft-activity-title-icon{
+    font-size : 22px;
+    margin-right : 5px;
+}
+
+.nft-activity-title{
+    font-size : 16px;
+    font-weight : 500;    
+}
+
+.item-activity{
+    border-bottom : 1px solid #393E46;
+}
+
+.item-activity >th ,td {
+    padding : 8px;
+    text-align : center;
+}
+
+.item-activity-logo-price{
+    margin-right : 10px;
+}

@@ -18,7 +18,7 @@ const Price = ({ profile }) => {
                 </div>
                 <div className="container-nft-price-actual-price-image">
                     <img className="nft-price-actual-price-image" src={profile.logo_price} alt="logo-price" />
-                    30
+                    {profile.price}
                 </div>
             </div>
             <div className="d-flex justify-center container-nft-price-button">

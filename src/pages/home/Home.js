@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import "./Home.css";
 import { toast } from "react-toastify";
-import CustomDropzone from "../../components/CustomDropzone";
-import useHttp from "../../hooks/useHttp";
 import Logo from "../../components/global/Logo";
 import DarkButton from "../../components/global/DarkButton";
 import homeWomen from "./../../assets/home/women.png";

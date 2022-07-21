@@ -112,8 +112,9 @@
   background: url("../../assets/layout/man_laptop.png");
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 0px 10px 10px 0px;
-  height: 75vh;
-  background-position: center
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .modal-foundation-close{
@@ -132,6 +133,7 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  padding: 5rem 0;
 }
 
 .modal-foundation-form > img {
@@ -144,21 +146,61 @@
   font-weight: 600;
 }
 
-.modal-foundation-form  span, .modal-foundation-form input {
+.modal-foundation-form  span, .modal-foundation-form input, .modal-foundation-form textarea {
   background-color: #393E46;
   border: none;
   color: #D9D9D9;
   border-radius: 10px;
+  resize: none;
+}
+
+.modal-foundation-form .ant-input-prefix{
+
   font-size: 1.35rem;
 }
 
 .modal-foundation-form input{
-  margin-left: 10px;
+  margin: 5px 10px;
 }
 
-.modal-foundation-form .ant-input-affix-wrapper{
+.modal-foundation-form input, .modal-foundation-form textarea{
+  font-size: 1rem;
+  font-weight: 200;
+  padding: 10px;
+}
+
+.modal-foundation-form .ant-input-affix-wrapper, .modal-foundation-form  .ant-input:focus{
   border: none;
   border-color: transparent !important;
   border-right-width: 0 !important;
   box-shadow: unset !important;
+}
+
+.modal-foundation-form > button {
+  background-color: #00afb7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-foundation-form-image{
+  width: 50%;
+}
+.modal-foundation-form-image > img{
+  width: 100%;
+}
+
+.modal-foundation-form-image-remove{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  color: #393E46 !important;
+  background-color: unset !important;
+  cursor: pointer;
 }

@@ -1,17 +1,24 @@
 import { Input, Modal } from "antd";
 import React, { useState } from "react";
 import { AiOutlineFileAdd } from "react-icons/ai";
-import {BiWorld} from "react-icons/bi"
-import { CloseOutlined,UserOutlined, FileTextFilled , MailOutlined } from '@ant-design/icons';
+import { BiWorld } from "react-icons/bi";
+import {
+  CloseOutlined,
+  UserOutlined,
+  FileTextFilled,
+  MailOutlined,
+  CloseCircleFilled
+} from "@ant-design/icons";
 import logoShort from "../../assets/logo/logo_D_big.png";
+import CustomDropzone from "../global/CustomDropzone";
 
 const ModalFoundation = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [fileInfo, setFileInfo] = useState([]);
 
   const showModal = () => {
     setIsModalVisible(true);
   };
-
 
   const handleCancel = () => {
     setIsModalVisible(false);
@@ -37,22 +44,37 @@ const ModalFoundation = () => {
         <div className="d-flex">
           <div className="w-50 position-relative">
             <div className="modal-foundation-close" onClick={handleCancel}>
-            <CloseOutlined />
+              <CloseOutlined />
             </div>
-            <div  className="d-flex justify-center align-center h-100">
-            <div className="modal-foundation-form">
+            <div className="d-flex justify-center align-center h-100">
+              <div className="modal-foundation-form">
                 <img src={logoShort} alt="logo-short" />
                 <h3>REGISTER YOUR FOUNDATION</h3>
                 <Input placeholder="Name..." prefix={<UserOutlined />} />
-                <Input prefix={<MailOutlined />} />
-                <Input prefix={<BiWorld />} />
-                <Input prefix={<FileTextFilled />} />
-            </div>
+                <Input placeholder="Email..." prefix={<MailOutlined />} />
+                <Input placeholder="Country..." prefix={<BiWorld />} />
+                <Input.TextArea
+                  rows={4}
+                  placeholder="Description / Foundation Cause..."
+                  prefix={<FileTextFilled />}
+                />
+                {fileInfo.length > 0 ? (
+                  <>
+                  <div className="position-relative modal-foundation-form-image">
+                    
+                  <img src={fileInfo[0].file.preview} alt="profile-preview" />
+                  <CloseCircleFilled className="modal-foundation-form-image-remove" onClick={() => setFileInfo([])} />
+                  </div>
+                  </>
+                ) : (
+                  <CustomDropzone setFileInfo={setFileInfo} />
+                )}
+
+                <button> Register</button>
+              </div>
             </div>
           </div>
-          <div className="w-50 modal-foundation-image">
-          </div>
-          
+          <div className="w-50 modal-foundation-image"></div>
         </div>
       </Modal>
     </div>

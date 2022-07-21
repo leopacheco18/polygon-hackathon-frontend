@@ -6,18 +6,18 @@ import DetailsNft from "../pages/detailsNft/DetailsNft";
 /* Importing the icons from the react-icons library. */
 import {
     AiFillHome,
-    AiOutlineFileAdd,
     AiOutlineFontColors,
     AiOutlineToTop,
 } from "react-icons/ai";
 
 /* Creating an array of objects. Each object has a path, title, component, and icon. */
 const authProtectedRoutes = [
-    { path: '/', title: 'Home', component: <DetailsNft />, icon: <AiFillHome />, exact: true },
-    { path: '/foundations', title: 'Foundations', component: <Foundations />, icon: <AiOutlineFontColors /> },
-    { path: '/top-contributors', title: 'Top Contributors', component: <HomeUser />, icon: <AiOutlineToTop /> },
-    { path: '/register-foundation', title: 'Register your foundation', component: <HomeUser />, icon: <AiOutlineFileAdd /> }
+    { path: '/', title: 'Home', component: <HomeUser />, icon: <AiFillHome />, exact: true, isAvailableInMenu: true },
+    { path: '/foundations', title: 'Foundations', component: <Foundations />, icon: <AiOutlineFontColors />, isAvailableInMenu: true },
+    { path: '/top-contributors', title: 'Top Contributors', component: <></>, icon: <AiOutlineToTop />, isAvailableInMenu: true },
+    { path: '/details-nft/:address/:tokenId', title: 'Details NFT', component: <DetailsNft />, icon: null, isAvailableInMenu: false }
 ]
+
 
 /* Exporting the array of objects. */
 export default authProtectedRoutes

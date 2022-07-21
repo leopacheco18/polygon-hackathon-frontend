@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import DarkButton from "../../global/DarkButton";
 import TextWithTopLine from "../../global/TextWithTopLine";
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 /* Importing the css file. */
 import './index.css'
 
 const NewestNFT = ({ nfts }) => {
+
+    const navigate = useNavigate();
 
     const [newestNFTs, setNewestNFTs] = useState(nfts)
     const [hoverIndex, setHoverIndex] = useState(-1);
@@ -15,9 +18,13 @@ const NewestNFT = ({ nfts }) => {
         setNewestNFTs(nfts)
     }, [nfts])
 
+    const redirectToDetailsNFT = (address, tokenId) => {
+        navigate(`/details-nft/${address}/${tokenId}`)
+    }
+
     const renderedNewestNFT = Object.values(newestNFTs).map((nft, i) => {
         return (
-            <div className="w-100 container-nft" onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px')}}>
+            <div className="w-100 container-nft" onClick={() => redirectToDetailsNFT(nft?.address, nft?.tokenId)} onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{ borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px') }}>
                 <div className="w-100">
                     <img src={nft?.img} alt="img-nfg" className="w-100 image-nft" />
                 </div>

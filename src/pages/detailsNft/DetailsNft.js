@@ -14,6 +14,8 @@ import LogoFoundationSpaceMan from "../../assets/homeUser/logo-foundation-1.png"
 
 
 const pro = {
+    address: 'Ox00',
+    tokenId: 1,
     img: SpaceMan,
     title: "Spaceman",
     owned: "0x...0096",
@@ -55,14 +57,18 @@ const DetailsNft = () => {
                     <ProfileNft profile={profile} />
                 </div>
 
-                <div className="w-50 d-flex flex-wrap">
+                <div className="w-50">
 
-                    <div className="w-60 card-description-nft">
-                        <Description profile={profile} />
-                    </div>
+                    <div className="d-flex">
 
-                    <div className="w-40 card-price-nft">
-                        <Price profile={profile} />
+                        <div className="w-60 card-description-nft">
+                            <Description profile={profile} />
+                        </div>
+
+                        <div className="w-40 card-price-nft">
+                            <Price profile={profile} />
+                        </div>
+
                     </div>
 
                     <Cause />

@@ -9,6 +9,10 @@ body::-webkit-scrollbar {
   width: 10px;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
 /* Track */
 body::-webkit-scrollbar-thumb {
   background: #222831;

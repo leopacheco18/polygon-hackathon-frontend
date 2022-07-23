@@ -13,7 +13,7 @@ const ProfileNft = ({ profile }) => {
                 </div>
             </div>
             <div className="h-100">
-                <img className="w-100 h-100 image-logo-nft" src={profile.img} alt="image-logo-nft" />
+                <img className="w-100 h-100 image-logo-nft" src={profile.img} alt="logo-nft" />
             </div>
         </div>
     )

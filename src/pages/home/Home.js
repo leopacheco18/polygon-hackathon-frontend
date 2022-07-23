@@ -89,7 +89,7 @@ const Home = () => {
         <TextWithTopLine>Our Team</TextWithTopLine>
         <div className="d-flex position-relative team-card-list">
           {team.map((item, index) => (
-            <TeamCard {...item} isTop={index % 2 === 0} />
+            <TeamCard {...item} isTop={index % 2 === 0} key={index} />
           ))}
         </div>
       </div>

@@ -26,7 +26,7 @@ const NewestNFT = ({ nfts }) => {
         return (
             <div className="w-100 container-nft" onClick={() => redirectToDetailsNFT(nft?.address, nft?.tokenId)} onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{ borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px') }}>
                 <div className="w-100">
-                    <img src={nft?.img} alt="img-nfg" className="w-100 image-nft" />
+                    <img src={nft?.img} alt="nft-detail" className="w-100 image-nft" />
                 </div>
                 <div className="info-card-nft w-100 d-flex flex-column">
                     <div className="d-flex flex-row justify-space-between" >

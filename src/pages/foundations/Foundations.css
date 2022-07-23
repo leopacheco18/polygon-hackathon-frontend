@@ -8,6 +8,41 @@
     padding-left: 5vw;
 }
 
+.search-bar{
+    padding: 1rem 0;
+}
+
+.search-bar span,
+.search-bar input{
+  background-color: #393e46;
+  border: none;
+  color: #d9d9d9;
+  border-radius: 30px;
+  resize: none;
+}
+
+.search-bar .ant-input-prefix {
+  font-size: 1.35rem;
+}
+
+.search-bar input {
+  margin: 5px 10px;
+}
+
+.search-bar input{
+  font-size: 1rem;
+  font-weight: 200;
+  padding: 10px;
+}
+
+.search-bar .ant-input-affix-wrapper,
+.search-bar .ant-input:focus {
+  border: none;
+  border-color: transparent !important;
+  border-right-width: 0 !important;
+  box-shadow: unset !important;
+}
+
 .home-card{
     margin-top: 2rem;
     width: 100%;

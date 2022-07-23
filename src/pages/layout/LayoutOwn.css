@@ -9,6 +9,7 @@
 }
 .header {
   border-left: 1px solid #eeeeee;
+  height: 75px !important;
 }
 
 .sider > .ant-layout-sider-trigger {
@@ -17,8 +18,8 @@
 }
 
 .max-height {
-  min-height: calc(100vh - 64px);
-  max-height: calc(100vh - 64px);
+  min-height: calc(100vh - 75px );
+  max-height: calc(100vh - 75px );
   padding-bottom: 3rem;
   overflow-y: auto;
   background-color: #e5e5e5;
@@ -39,12 +40,52 @@
 }
 
 .donaty-logos {
-  margin: 30px 0px 30px 0px;
+  margin: 15px 0px 30px 0px;
   align-items: center;
 }
 
+.donaty-logo-header{
+  height: 50px;
+  margin: 2.5px 2.5px 2.5px 2.5px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-header{
+  padding: 0 1rem;
+}
+
+.donaty-logo-header > img{
+  height: 80%;
+}
+
+.route-logo-small {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  width: 50px;
+  border-radius: 50% !important;
+}
+
+.route-logo-small-center{
+  margin: auto !important;
+}
+
+.route-logo-small > .route-logo {
+  margin-right: 0;
+}
+
 .route-logo {
+  font-size: 1.3rem;
   margin-right: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .route {
@@ -117,16 +158,74 @@
   background-size: cover;
 }
 
-.modal-foundation-close{
+.modal-foundation-close {
   position: absolute;
   top: 20px;
   left: 20px;
-  color: #EEEEEE;
+  color: #eeeeee;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-.modal-foundation-form{
+.form-group{
+  display: flex;
+  width: 100%;
+}
+
+.ant-select-dropdown {
+  
+  background-color: #343c45 !important;
+}
+
+.ant-select-dropdown .ant-select-item{
+  color: #eeeeee !important;
+  padding-right: 3rem;
+}
+
+.ant-select-dropdown  .ant-select-item-option-active, .ant-select-dropdown .ant-select-item-option-selected{
+  
+  background-color: #222831 !important;
+}
+
+.form-group > .prefix {
+  background-color: #393e46;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d9d9d9;
+  font-size: 1.35rem;
+  padding-left: 11px;
+}
+
+.form-group .ant-select-selection-placeholder{
+  z-index: 1;
+  font-weight: 100;
+  font-size: 1rem;
+}
+.form-group .ant-select-selection-item {
+  
+  z-index: 1;
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+.form-group .ant-select-selector{
+  background-color: #393e46 !important;
+  border: none !important;
+  box-shadow: unset !important;
+  padding-left: 5px !important;
+}
+
+
+.form-group > .ant-select{
+  padding: 5px 10px;
+  background-color: #393e46 !important;
+  border-radius: 0 10px 10px 0;
+
+}
+
+.modal-foundation-form {
   width: 70%;
 
   display: flex;
@@ -140,36 +239,39 @@
   width: 12.5vh;
 }
 
-.modal-foundation-form  > h3{
+.modal-foundation-form > h3 {
   font-size: 1.35rem;
-  color: #EEEEEE;
+  color: #eeeeee;
   font-weight: 600;
 }
 
-.modal-foundation-form  span, .modal-foundation-form input, .modal-foundation-form textarea {
-  background-color: #393E46;
+.modal-foundation-form span,
+.modal-foundation-form input,
+.modal-foundation-form textarea {
+  background-color: #393e46;
   border: none;
-  color: #D9D9D9;
+  color: #d9d9d9;
   border-radius: 10px;
   resize: none;
 }
 
-.modal-foundation-form .ant-input-prefix{
-
+.modal-foundation-form .ant-input-prefix {
   font-size: 1.35rem;
 }
 
-.modal-foundation-form input{
+.modal-foundation-form input {
   margin: 5px 10px;
 }
 
-.modal-foundation-form input, .modal-foundation-form textarea{
+.modal-foundation-form input,
+.modal-foundation-form textarea {
   font-size: 1rem;
   font-weight: 200;
   padding: 10px;
 }
 
-.modal-foundation-form .ant-input-affix-wrapper, .modal-foundation-form  .ant-input:focus{
+.modal-foundation-form .ant-input-affix-wrapper,
+.modal-foundation-form .ant-input:focus {
   border: none;
   border-color: transparent !important;
   border-right-width: 0 !important;
@@ -188,19 +290,19 @@
   cursor: pointer;
 }
 
-.modal-foundation-form-image{
+.modal-foundation-form-image {
   width: 50%;
 }
-.modal-foundation-form-image > img{
+.modal-foundation-form-image > img {
   width: 100%;
 }
 
-.modal-foundation-form-image-remove{
+.modal-foundation-form-image-remove {
   position: absolute;
   top: 10px;
   left: 10px;
   font-size: 1.5rem;
-  color: #393E46 !important;
+  color: #393e46 !important;
   background-color: unset !important;
   cursor: pointer;
 }

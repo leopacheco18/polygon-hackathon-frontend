@@ -130,6 +130,10 @@ body::-webkit-scrollbar-thumb {
   justify-content : space-between
 }
 
+.justify-end{
+  justify-content : end;
+}
+
 .align-center  {
   align-items :center;
 }

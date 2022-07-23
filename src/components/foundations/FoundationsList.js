@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import DarkButton from "../global/DarkButton";
 import TextWithTopLine from "../global/TextWithTopLine";
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-
 import { AiOutlineEnvironment } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const FoundationsList = ({ foundationsElements }) => {
+
+    const navigate = useNavigate();
 
     const [foundations, setFoundations] = useState(foundationsElements)
     const [hoverIndex, setHoverIndex] = useState(-1);
@@ -14,9 +16,13 @@ const FoundationsList = ({ foundationsElements }) => {
         setFoundations(foundationsElements)
     }, [foundationsElements])
 
+    const redirectToDetailsFoundation = (name) => {
+        navigate(`/foundation-details/${name}`)
+    }
+
     const renderedFoundationsList = Object.values(foundations).map((foundation, i) => {
         return (
-            <div className="w-30 container-nft" onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{ borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px') }}>
+            <div className="w-30 container-nft" onClick={() => redirectToDetailsFoundation(foundation.name)} onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{ borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px') }}>
                 <div className="w-100">
                     <img src={foundation?.img} alt="img-nfg" className="w-100 image-nft" />
                 </div>

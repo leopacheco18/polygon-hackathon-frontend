@@ -1,0 +1,61 @@
+
+.about-us{
+    color : white;
+    border-radius : 5px;
+    margin-bottom : 10px;
+}
+
+.about-us-card{
+    background-color : #FBFBFB;
+    padding: 20px;
+    border-radius : 15px;
+}
+
+.about-us-description-title{
+    background-color : #222831;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius : 8px;
+}
+
+.about-us-description-title-des{
+    font-size : 16px;
+    border-radius : 20px;
+}
+
+.about-us-description-logo{
+    font-size : 20px;
+    margin-right : 5px;
+}
+
+.about-use-description-information{
+    background-color : #EEEEEE;
+    color : #000000;
+    text-align: justify;
+    padding : 30px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius : 8px;
+}
+
+.about-us-location-email{
+    margin-top : 10px;
+}
+
+.posts-card{
+    background-color : #FBFBFB;
+    padding: 20px;
+    border-radius : 15px;
+}
+
+.posts-date{
+    margin-bottom: 15px;
+}
+
+.posts-date-icon{
+    margin-right : 5px;
+    font-size : 20px;
+    color : aqua;
+}
+
+.posts-date-day{
+    color : #EEEEEE;
+}

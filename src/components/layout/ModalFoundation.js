@@ -1,6 +1,6 @@
 import { Input, Modal, Select } from "antd";
 import React, { useEffect, useState } from "react";
-import { AiOutlineFileAdd } from "react-icons/ai";
+import { FaHandHoldingHeart } from "react-icons/fa";
 import { BiWorld } from "react-icons/bi";
 import {
   CloseOutlined,
@@ -140,7 +140,7 @@ const ModalFoundation = ({ isCollapsed }) => {
             }`}
           >
             <div className="route-logo">
-              <AiOutlineFileAdd />
+              <FaHandHoldingHeart />
             </div>
             {!isCollapsed && (
               <div className="route-title">Register your foundation</div>

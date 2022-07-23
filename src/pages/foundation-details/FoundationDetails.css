@@ -1,0 +1,136 @@
+
+.about-us{
+    color : white;
+    border-radius : 5px;
+    margin-bottom : 10px;
+}
+
+.about-us-card{
+    background-color : #FBFBFB;
+    padding: 20px;
+    border-radius : 15px;
+}
+
+.about-us-description-title{
+    background-color : #222831;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius : 8px;
+}
+
+.about-us-description-title-des{
+    font-size : 16px;
+    border-radius : 20px;
+}
+
+.about-us-description-logo{
+    font-size : 20px;
+    margin-right : 5px;
+}
+
+.about-use-description-information{
+    background-color : #EEEEEE;
+    color : #000000;
+    text-align: justify;
+    padding : 30px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius : 8px;
+}
+
+.about-us-location-email{
+    margin-top : 10px;
+}
+
+.posts-card{
+    background-color : #FBFBFB;
+    padding: 20px;
+    border-radius : 15px;
+}
+
+.posts-date{
+    margin-bottom: 15px;
+}
+
+.posts-date-icon{
+    margin-right : 5px;
+    font-size : 20px;
+    color : aqua;
+}
+
+.posts-date-day{
+    color : #EEEEEE;
+}
+
+.profile-foundation {
+    position: relative;
+    padding: 0;
+    width: 100%;
+    margin: 25px auto;
+    height: 30vh;
+  }
+  
+  .back-image {
+    position: absolute;
+    z-index: 0;
+    filter: blur(3px) saturate(2);
+    left: -4%;
+    right: -4%;
+    width: 108% !important;
+    height: 26vh;
+    border-radius: 10px;
+    top: 2vh; /* KEY */
+  }
+  
+  .profile-foundation > img:last-child {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    height: 30vh;
+  }
+  
+.profile-foundation-info-container{
+    display: flex;
+    margin: 25px 0 25px 5%;
+    background-color: #222831;
+    height: 30vh;
+    border-radius: 10px;
+    color: #EEEEEE;
+}
+.profile-foundation-icon-hand{
+    transform: scaleX(-1);
+    font-size: 30vh;
+}
+  
+.profile-foundation-header-name > h2 {
+    color: inherit !important;
+    font-size: 3.5rem;
+}
+
+.profile-foundation-header-name{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+  
+.profile-foundation-options{
+    display: flex;
+    gap: 10px;
+}
+.profile-foundation-options > div {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-foundation-options > div > div{
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+  
+.navbar-details-foundation{
+    gap: 5rem;
+}

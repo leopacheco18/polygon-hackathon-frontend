@@ -24,7 +24,7 @@ const NewestNFT = ({ nfts }) => {
 
     const renderedNewestNFT = Object.values(newestNFTs).map((nft, i) => {
         return (
-            <div className="w-100 container-nft" onClick={() => redirectToDetailsNFT(nft?.address, nft?.tokenId)} onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{ borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px') }}>
+            <div key={i} className="w-100 container-nft" onClick={() => redirectToDetailsNFT(nft?.address, nft?.tokenId)} onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{ borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px') }}>
                 <div className="w-100">
                     <img src={nft?.img} alt="nft-detail" className="w-100 image-nft" />
                 </div>

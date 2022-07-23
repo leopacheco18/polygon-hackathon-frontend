@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import DarkButton from "../global/DarkButton";
 import TextWithTopLine from "../global/TextWithTopLine";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { LeftOutlined, RightOutlined , SearchOutlined} from "@ant-design/icons";
 
 import { AiOutlineEnvironment } from "react-icons/ai";
 import { Input } from "antd";
-import { SearchOutlined } from '@ant-design/icons';
-
+import { useNavigate } from "react-router-dom";
+import countryList from "../../assets/json/countries.json"
 const itemPerPages = 6;
 const FoundationsList = ({ foundationsElements }) => {
   const [foundations, setFoundations] = useState([]);
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     changePage();
@@ -22,14 +24,18 @@ const FoundationsList = ({ foundationsElements }) => {
     filterFoundations();
   }, [search])
 
+  const redirectToDetailsFoundation = (address) => {
+    navigate(`/foundation-details/${address}`)
+}
 
-  const filterFoundations = (returnArr = false) => {
+
+const filterFoundations = (returnArr = false) => {
     if(!search){
         changePage();
         return
     };
     let arr = [...foundationsElements];
-    arr = arr.filter(item => item.name.includes(search))
+    arr = arr.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
     setPage(1);
     if(returnArr){
         return arr;
@@ -39,38 +45,32 @@ const FoundationsList = ({ foundationsElements }) => {
   }
 
   const changePage = () => {
+    let arr= []
     if(search){
-        let arr = filterFoundations(true);
-        if(arr.length === 0) return;
-        if(page <= 0){
-            setPage(1)
-            return;
-        }else if(((page - 1) * itemPerPages) >= arr.length){
-            setPage(page -1);
-            return;
-        } 
-        arr = arr.slice((page - 1) * itemPerPages, page * itemPerPages)
-        setFoundations(arr);
+        arr = filterFoundations(true);
     }else{
-        if(foundationsElements.length === 0) return;
-        if(page <= 0){
-            setPage(1)
-            return;
-        }else if(((page - 1) * itemPerPages) >= foundationsElements.length){
-            setPage(page -1);
-            return;
-        } 
-        let arr = [...foundationsElements];
-        arr = arr.slice((page - 1) * itemPerPages, page * itemPerPages)
-        setFoundations(arr);
+        arr = [...foundationsElements];
     }
+    if(arr.length === 0) return;
+    if(page <= 0){
+        setPage(1)
+        return;
+    }else if(((page - 1) * itemPerPages) >= arr.length){
+        setPage(page -1);
+        return;
+    } 
+    arr = arr.slice((page - 1) * itemPerPages, page * itemPerPages)
+    setFoundations(arr);
   }
+
 
   const renderedFoundationsList = Object.values(foundations).map(
     (foundation, i) => {
       return (
         <div
+          key={i}
           className="w-30 container-nft"
+          onClick={() => redirectToDetailsFoundation(foundation.ethAddress)}
           onMouseOver={() => setHoverIndex(i)}
           onMouseOut={() => setHoverIndex(-1)}
           style={{ borderRadius: hoverIndex === i ? "10px 10px 0 0" : "10px" }}
@@ -95,11 +95,10 @@ const FoundationsList = ({ foundationsElements }) => {
               <div className="card-foundation-location d-flex flex-row">
                 <div className="card-foundation-location-logo">
                   <AiOutlineEnvironment />
+
                 </div>
                 <p className="card-foundation-location-name d-flex align-items">
-                  {foundation.location?.length > 38
-                    ? foundation.location?.slice(0, 38) + "..."
-                    : foundation.location}
+                  {countryList[foundation?.country]}
                 </p>
               </div>
             </div>

@@ -3,7 +3,7 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { MdMarkEmailUnread, MdModeEdit } from "react-icons/md";
 import GreenButton from "../global/GreenButton";
 
-const HeaderFoundation = ({ foundation, isOwner }) => {
+const HeaderFoundation = ({ foundation, isOwner, showAddCause, setShowAddCause, showAddPost, setShowAddPost }) => {
   return (
     <div className="d-flex">
       <div className="w-30">
@@ -25,18 +25,24 @@ const HeaderFoundation = ({ foundation, isOwner }) => {
               </GreenButton>
               {isOwner && (
                 <>
-                  <GreenButton>
-                    <div>
-                      <MdModeEdit />
-                    </div>
-                    New Post
-                  </GreenButton>
-                  <GreenButton>
+                {!showAddPost &&
+                
+                <GreenButton onClick={() => setShowAddPost(true)} >
+                <div>
+                  <MdModeEdit />
+                </div>
+                New Post
+              </GreenButton>
+                
+                }
+                {!showAddCause && 
+                  <GreenButton onClick={() => setShowAddCause(true)} >
                     <div>
                       <MdModeEdit />
                     </div>
                     New Cause
                   </GreenButton>
+                }
                 </>
               )}
             </div>

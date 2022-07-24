@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 
 import { Dropdown, Layout, Menu } from "antd";
 import { useMoralis } from "react-moralis";
@@ -18,7 +18,7 @@ const LayoutOwn = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const { logout,  user  } = useMoralis();
   const location = useLocation();
-
+  const navigate = useNavigate();
   // const ListItemLink = ({ to, ...rest }) => {
   //   return (
   //     <Route
@@ -37,7 +37,10 @@ const LayoutOwn = () => {
   };
 
   const validateOption = (e) => {
-    if(e.key === 'logout') logout();
+    if(e.key === 'logout'){
+      navigate('/')
+      logout()
+    };
     
   } 
 

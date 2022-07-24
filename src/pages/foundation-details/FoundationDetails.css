@@ -134,3 +134,15 @@
 .navbar-details-foundation{
     gap: 5rem;
 }
+.add-new-post-cancel{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.add-new-post-card{
+    height: 50vh;
+    font-size: 25vh;
+    color: white;
+    background-color: #EEEEEE;
+}

@@ -7,7 +7,7 @@ const Posts = ({ foundation }) => {
 
     const [hoverIndex, setHoverIndex] = useState(-1);
 
-    const renderedPostsList = foundation?.posts.length > 0 && Object.values(foundation?.posts).map((post, i) => {
+    const renderedPostsList = foundation?.posts?.length > 0 && Object.values(foundation?.posts).map((post, i) => {
         return (
             <div className="w-30 container-nft" onMouseOver={() => setHoverIndex(i)} onMouseOut={() => setHoverIndex(-1)} style={{ borderRadius: (hoverIndex === i ? '10px 10px 0 0' : '10px') }}>
                 <div className="w-100">

@@ -21,6 +21,8 @@ import Logo3 from "../../assets/foundation/3.png";
 import useHttp from "../../hooks/useHttp";
 import HeaderFoundation from "../../components/foundation-details/HeaderFoundation";
 import { useMoralis } from "react-moralis";
+import SupportCause from "../../components/foundation-details/SupportCause";
+import AddPost from "../../components/foundation-details/AddPost";
 
 const fou = {
   description:
@@ -58,18 +60,34 @@ const FoundationDetails = () => {
   let { address } = useParams();
   const [foundation, setFoundation] = useState(null);
   const [isOwner, setIsOwner] = useState(false);
-  const {user} = useMoralis();
+  const { user } = useMoralis();
   const { request } = useHttp();
-  const [options, setOptions] = useState([
-    { option: "About us", isActive: true },
-    { option: "Post", isActive: false },
-    { option: "Support the cause", isActive: false },
-  ]);
+  const [options, setOptions] = useState([]);
+  const [showAddPost, setShowAddPost] = useState(false);
+  const [showAddCause, setShowAddCause] = useState(false);
 
   useEffect(() => {
     // call to get all profile of foundation
     if (!foundation) {
       getFoundationByAddress();
+    } else {
+      setOptions([
+        {
+          option: "About us",
+          isActive: true,
+          view: <AboutAs foundation={foundation} />,
+        },
+        {
+          option: "Post",
+          isActive: false,
+          view: <Posts foundation={foundation} />,
+        },
+        {
+          option: "Support the cause",
+          isActive: false,
+          view: <SupportCause foundation={foundation} />,
+        },
+      ]);
     }
   }, [foundation]);
 
@@ -82,41 +100,61 @@ const FoundationDetails = () => {
     const response = await request(configRequest);
     if (response.success) {
       setFoundation(response.foundation);
-      setIsOwner(user.get('ethAddress') === response.foundation.ethAddress)
+      setIsOwner(user.get("ethAddress") === response.foundation.ethAddress);
     }
   };
 
   const setActive = (index) => {
     let arrAux = [...options];
-    arrAux.forEach((item) => {item.isActive = false});
+    arrAux.forEach((item) => {
+      item.isActive = false;
+    });
     arrAux[index].isActive = true;
     setOptions(arrAux);
-  }
+  };
 
   return (
     <div className="container">
-      <HeaderFoundation foundation={foundation} isOwner={isOwner} />
+      <HeaderFoundation
+        foundation={foundation}
+        isOwner={isOwner}
+        setShowAddPost={setShowAddPost}
+        showAddPost={showAddPost}
+        setShowAddCause={setShowAddCause}
+        showAddCause={showAddCause}
+      />
 
-      <nav className="navbar-details-foundation d-flex">
-        {options.map((item, key) => (
-          <TextWithTopLine
-            key={key}
-            padding={"1rem 0"}
-            fontSize="1.25rem"
-            fontWeight={item.isActive ? 600 : 300}
-            borderTop={item.isActive ? null : "5px solid transparent"}
-            onClick={() => setActive(key)}
-            cursor={"pointer"}
-          >
-            {item.option}
-          </TextWithTopLine>
-        ))}
-        {/* <Link to="/">
+      {showAddCause && <></>}
+
+      {showAddPost && <AddPost setShowAddPost={setShowAddPost} />}
+
+      {!showAddCause && !showAddPost && (
+        <>
+          <nav className="navbar-details-foundation d-flex">
+            {options.map((item, key) => (
+              <TextWithTopLine
+                key={key}
+                padding={"1rem 0"}
+                fontSize="1.25rem"
+                fontWeight={item.isActive ? 600 : 300}
+                borderTop={item.isActive ? null : "5px solid transparent"}
+                onClick={() => setActive(key)}
+                cursor={"pointer"}
+              >
+                {item.option}
+              </TextWithTopLine>
+            ))}
+            {/* <Link to="/">
                     <TextWithTopLine padding={'1rem 0'} fontSize="1.25rem" fontWeight={600} >About Us</TextWithTopLine>
                 </Link> */}
-      </nav>
+          </nav>
 
-      <AboutAs foundation={foundation} />
+          {options.map((item) => {
+            if (item.isActive) return item.view;
+            return <></>;
+          })}
+        </>
+      )}
 
       {/** 
             <Posts foundation={foundation} />

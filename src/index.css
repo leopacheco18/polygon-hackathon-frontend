@@ -78,6 +78,10 @@ body::-webkit-scrollbar-thumb {
   margin-bottom : 0px;
 }
 
+.mb-5{
+  margin-bottom : 5px;
+}
+
 .text-top-border{
     border-top: 5px solid #71CED3;
     width: fit-content;

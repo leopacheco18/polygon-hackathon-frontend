@@ -107,22 +107,7 @@ const filterFoundations = (returnArr = false) => {
                 More Information
               </button>
             </div>
-            {/* 
-                    <div className="card-nft-foundation d-flex flex-row">
-                        <img src={foundation.logo_foundation} className="card-nft-image-logo-foundation" alt="logo-price" />
-                        < p className="card-nft-name-foundation mb-0">
-                            {foundation.name_foundation}
-                        </p>
-                    </div>
-                    */}
           </div>
-          {/** 
-                <div className="card-nft-status">
-                    <button className={`w-100 card-button-nft ${foundation.status ? 'button-nft-available' : 'button-nft-unavailable'} ${hoverIndex === i && 'card-button-nft-show'}`} >
-                        {foundation.status ? 'Buy Now' : 'Not available'}
-                    </button>
-                </div>
-                */}
         </div>
       );
     }
@@ -152,7 +137,7 @@ const filterFoundations = (returnArr = false) => {
             <RightOutlined />
           </DarkButton>
         </div>
-        <div className="w-95 flex-wrap container-ntfs-list d-flex  justify-space-between align-start">
+        <div className="w-95 flex-wrap container-ntfs-list d-flex   align-start">
           {renderedFoundationsList}
         </div>
       </div>

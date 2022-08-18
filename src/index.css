@@ -37,6 +37,9 @@ body::-webkit-scrollbar-thumb {
 .w-30 {
   width: 30%;
 }
+.w-35 {
+  width: 35%;
+}
 .w-40 {
   width: 40%;
 }
@@ -45,6 +48,9 @@ body::-webkit-scrollbar-thumb {
 }
 .w-60 {
   width: 60%;
+}
+.w-65 {
+  width: 65%;
 }
 .w-70 {
   width: 70%;
@@ -183,6 +189,21 @@ body::-webkit-scrollbar-thumb {
 .menu-own  > .ant-dropdown-menu-item-active{
   
   background-color: #222831 !important;
+}
+
+.loading-container{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ADB5;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 5rem;
 }
 
 .dark-dropdown > button{

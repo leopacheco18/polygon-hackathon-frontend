@@ -41,7 +41,6 @@ const ModalFoundation = ({ isCollapsed }) => {
 
   useEffect(() => {
     if (fileInfo.length > 0) {
-      console.log(fileInfo[0].file)
       getBase64(fileInfo[0].file);
     } else {
       setFormFoundation({ ...formFoundation, image: "" });

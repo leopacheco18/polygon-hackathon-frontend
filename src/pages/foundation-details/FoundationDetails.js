@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Routes,
-  Route,
-  Link,
-  useLocation,
-  BrowserRouter,
-  Switch,
   useParams,
 } from "react-router-dom";
 
@@ -15,46 +9,15 @@ import TextWithTopLine from "../../components/global/TextWithTopLine";
 
 import "./FoundationDetails.css";
 
-import Logo1 from "../../assets/foundation/1.png";
-import Logo2 from "../../assets/foundation/2.png";
-import Logo3 from "../../assets/foundation/3.png";
 import useHttp from "../../hooks/useHttp";
 import HeaderFoundation from "../../components/foundation-details/HeaderFoundation";
 import { useMoralis } from "react-moralis";
 import SupportCause from "../../components/foundation-details/SupportCause";
 import AddPost from "../../components/foundation-details/AddPost";
-
-const fou = {
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-  cause:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem",
-  location: "Ecuador - Quito",
-  email: "waynermoya@hotmai.com",
-  posts: [
-    {
-      img: Logo1,
-      title: "Purchase of Dog Food",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry is standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      date: "July 20, 2022",
-    },
-    {
-      img: Logo2,
-      title: "Purchase of Dog Food",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry is standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      date: "July 20, 2022",
-    },
-    {
-      img: Logo3,
-      title: "Purchase of Dog Food",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry is standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      date: "July 20, 2022",
-    },
-  ],
-};
+import AddNft from "../../components/foundation-details/AddNft";
+import AddNewCause from "../../components/foundation-details/AddNewCause";
+import Steps from "../../components/foundation-details/Steps";
+import NFTCause from "../../components/foundation-details/NFTCause";
 
 const FoundationDetails = () => {
   let { address } = useParams();
@@ -64,7 +27,10 @@ const FoundationDetails = () => {
   const { request } = useHttp();
   const [options, setOptions] = useState([]);
   const [showAddPost, setShowAddPost] = useState(false);
+  const [showAddNft, setShowAddNft] = useState(false);
   const [showAddCause, setShowAddCause] = useState(false);
+  const [showSteps, setShowSteps] = useState(false);
+  const [showNFT, setShowNFT] = useState(false);
 
   useEffect(() => {
     // call to get all profile of foundation
@@ -75,17 +41,17 @@ const FoundationDetails = () => {
         {
           option: "About us",
           isActive: true,
-          view: <AboutAs foundation={foundation} />,
+          view: <AboutAs key={1} foundation={foundation} />,
         },
         {
           option: "Post",
           isActive: false,
-          view: <Posts foundation={foundation} />,
+          view: <Posts key={2} foundation={foundation} />,
         },
         {
           option: "Support the cause",
           isActive: false,
-          view: <SupportCause foundation={foundation} />,
+          view: <SupportCause setShowAddNft={setShowAddNft} key={3} foundation={foundation} setShowSteps={setShowSteps} setShowNFT={setShowNFT} />,
         },
       ]);
     }
@@ -124,11 +90,17 @@ const FoundationDetails = () => {
         showAddCause={showAddCause}
       />
 
-      {showAddCause && <></>}
+      {showAddCause && <AddNewCause setShowAddCause={setShowAddCause} />}
 
       {showAddPost && <AddPost setShowAddPost={setShowAddPost} />}
 
-      {!showAddCause && !showAddPost && (
+      {showAddNft && <AddNft setShowAddNft={setShowAddNft} showAddNft={showAddNft} />}
+
+      {showSteps && <Steps setShowSteps={setShowSteps} showSteps={showSteps} />}
+
+      {showNFT && <NFTCause setShowNFT={setShowNFT} showNFT={showNFT} />}
+
+      {!showAddCause && !showNFT && !showSteps && !showAddNft && !showAddPost && (
         <>
           <nav className="navbar-details-foundation d-flex">
             {options.map((item, key) => (
@@ -149,9 +121,9 @@ const FoundationDetails = () => {
                 </Link> */}
           </nav>
 
-          {options.map((item) => {
+          {options.map((item, key) => {
             if (item.isActive) return item.view;
-            return <></>;
+            return <React.Fragment key={key + 10}></React.Fragment>;
           })}
         </>
       )}

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { AiFillPoundCircle } from "react-icons/ai";
+import Amount from "../../assets/homeUser/logo-amount.png"
 
 const Price = ({ profile }) => {
 
@@ -17,7 +18,7 @@ const Price = ({ profile }) => {
                     Actual Price
                 </div>
                 <div className="container-nft-price-actual-price-image">
-                    <img className="nft-price-actual-price-image" src={profile.logo_price} alt="logo-price" />
+                    <img className="nft-price-actual-price-image" src={Amount} alt="logo-price" />
                     {profile.price}
                 </div>
             </div>

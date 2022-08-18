@@ -1,63 +1,70 @@
 import React, { useEffect, useState } from 'react'
 
-import { BsCalendar2Event, BsCalendar2EventFill, BsFillDiamondFill, BsFillEyeFill, BsFillHandIndexFill, BsHandIndexThumb } from "react-icons/bs";
+import {  BsCalendar2EventFill, BsFillDiamondFill, BsFillEyeFill, BsFillHandIndexFill } from "react-icons/bs";
 
-import SupportCauseImage from '../../assets/supportCauses/cause.png'
+import useHttp from '../../hooks/useHttp';
 
-const SupportCause = () => {
+const SupportCause = ({setShowAddNft, foundation, setShowSteps, setShowNFT}) => {
 
-  const [cause, setCause] = useState(null)
+  const [cause, setCause] = useState([]);
+  const { request } = useHttp();
 
 
-  const calculatePercentageProgress = (goal, actual) => {
-    return (100 * parseInt(actual)) / parseInt(goal)
-  }
+  // const calculatePercentageProgress = (goal, actual) => {
+  //   return (100 * parseInt(actual)) / parseInt(goal)
+  // }
 
   useEffect(() => {
 
-    const percentageProgress = calculatePercentageProgress('2000', '1100')
+    // const percentageProgress = calculatePercentageProgress('2000', '1100')
 
-    setCause({
-      title: 'Get Food for Rescued Dogs',
-      goal: '2000',
-      totalCollected: '1100',
-      dateInitial: 'July 10, 2022',
-      dateFinish: 'Oct 22, 2022',
-      progressBar: percentageProgress
-    })
+    getCauses()
   }, [])
 
 
+  const getCauses = async () => {
+    let configRequest = {
+      type: "get",
+      endpoint: `cause/get-cause-by-wallet/${foundation.ethAddress}`,
+    };
+    const response = await request(configRequest);
+    if (response.success) {
+      setCause(response.causes);
+    }
+  }
+
 
   return (
-    <div className='container d-flex flex-row align-center cause-card'>
+    <>
+    {cause.map((item, index) => (
+      <div key={index} className='container d-flex flex-row align-center cause-card'>
 
       <div className='w-30 cause-logo'>
-        <img className='w-100' src={SupportCauseImage} alt="support-cause-logo" />
+        <img className='w-100' src={item.ipfsImage} alt="support-cause-logo" />
       </div>
 
       <div className='w-70 d-flex flex-column cause-information'>
 
         <div className='cause-title'>
-          Cause: <span className='cause-title-principal'>{cause?.title}</span>
+          Cause: <span className='cause-title-principal'>{item.title}</span>
         </div>
 
         <div className='cause-final-goal'>
-          Final Goal : <span className='cause-final-goal-principal'>{cause?.goal}$</span>
+          Final Goal : <span className='cause-final-goal-principal'>{item?.goal}$</span>
         </div>
 
-        <div className='cause-total-collected'>
+        {/* <div className='cause-total-collected'>
           Total Collected : <span className='cause-total-collected-principal'>{cause?.totalCollected}$</span>
-        </div>
+        </div> */}
 
-        <div className='total-goal-bar'>
+        {/* <div className='total-goal-bar'>
           <div
             className='my-actual-progress-bar d-flex justify-center align-center'
             style={{ width: cause?.progressBar + '%' }}
           >
             {cause?.progressBar > 20 && cause?.totalCollected + '$'}
           </div>
-        </div>
+        </div> */}
 
         <div className='d-flex flex-row justify-space-between cause-date'>
 
@@ -67,12 +74,12 @@ const SupportCause = () => {
             </div>
             <div className='d-flex align-center cause-date-info'>
               <BsCalendar2EventFill className='cause-date-icons' />
-              {cause?.dateInitial}
+              {item?.initialDate}
             </div>
           </div>
 
           <div className='d-flex align-center cause-date-progress'>
-            ---------------------------------------------------->
+          <hr className="w-100" />
           </div>
 
           <div className='cause-date-finish'>
@@ -81,22 +88,22 @@ const SupportCause = () => {
             </div>
             <div className='d-flex align-center cause-date-info'>
               <BsCalendar2EventFill className='cause-date-icons' />
-              {cause?.dateInitial}
+              {item?.dueDate}
             </div>
           </div>
 
         </div>
 
         <div className='d-flex justify-center justify-space-between cause-bottoms'>
-          <button className='w-30 d-flex justify-center align-center cause-bottom'>
+          <button className='w-30 d-flex justify-center align-center cause-bottom' onClick={() =>setShowAddNft(item.contractAddress)}>
             <BsFillHandIndexFill className='cause-bottom-icon' />
             Support
           </button>
-          <button className='w-30 d-flex justify-center align-center cause-bottom'>
+          <button className='w-30 d-flex justify-center align-center cause-bottom' onClick={() =>setShowSteps(item)}>
             <BsFillEyeFill className='cause-bottom-icon' />
             View Steps
           </button>
-          <button className='w-30 d-flex justify-center align-center cause-bottom'>
+          <button className='w-30 d-flex justify-center align-center cause-bottom' onClick={() =>setShowNFT(item)} >
             <BsFillDiamondFill className='cause-bottom-icon' />
             View NFTs
           </button>
@@ -105,6 +112,8 @@ const SupportCause = () => {
       </div>
 
     </div>
+    ))}
+    </>
   )
 }
 

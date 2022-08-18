@@ -3,11 +3,12 @@ import DarkButton from "../../global/DarkButton";
 import TextWithTopLine from "../../global/TextWithTopLine";
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import Amount from "../../../assets/homeUser/logo-amount.png"
 
 /* Importing the css file. */
 import './index.css'
 
-const NewestNFT = ({ nfts }) => {
+const NewestNFT = ({ nfts, setPage, page }) => {
 
     const navigate = useNavigate();
 
@@ -37,7 +38,7 @@ const NewestNFT = ({ nfts }) => {
                             <p>
                                 {nft.price}
                             </p>
-                            <img src={nft.logo_price} className="card-nft-image-logo-amount" alt="logo-price" />
+                            <img src={Amount} className="card-nft-image-logo-amount" alt="logo-price" />
                         </div>
                     </div>
                     <div className="card-nft-foundation d-flex flex-row">
@@ -61,10 +62,10 @@ const NewestNFT = ({ nfts }) => {
             <TextWithTopLine padding={'1rem 0'} fontSize="1.25rem" fontWeight={600} >Newest NFT´s</TextWithTopLine>
             <div className="card-nfts">
                 <div className="d-flex card-nfts-pagination w-95 ">
-                    <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"}> <LeftOutlined /> </DarkButton>
-                    <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"}> <RightOutlined /> </DarkButton>
+                    <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"} onClick={() => setPage(page - 1)}> <LeftOutlined /> </DarkButton>
+                    <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"} onClick={() => setPage(page + 1)}> <RightOutlined /> </DarkButton>
                 </div>
-                <div className="w-95 container-ntfs-list d-flex  justify-space-between align-start">
+                <div className="w-95 container-ntfs-list d-flex  align-start">
                     {renderedNewestNFT}
                 </div>
             </div>

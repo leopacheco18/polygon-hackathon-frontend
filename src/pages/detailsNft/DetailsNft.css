@@ -6,7 +6,6 @@
     width : 100%;
     background-color : white;
     border-radius : 5px;
-    //padding : 15px 0 15px 2.5vw;
     padding : 20px;
 }
 
@@ -163,6 +162,10 @@
 
 .nft-cause-foundation-logo{
     margin-right : 10px;
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px #eeeeee;
 }
 
 .nft-cause-foundation-name{
@@ -208,3 +211,12 @@
 .item-activity-logo-price{
     margin-right : 10px;
 }
+
+.get-back-nft-details {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 10px;
+  }

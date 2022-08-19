@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import Cause from "../../components/detailsNft/Cause";
 import Description from "../../components/detailsNft/Description";
-import ItemsActivity from "../../components/detailsNft/ItemsActivity";
 import Price from "../../components/detailsNft/Price";
 import ProfileNft from "../../components/detailsNft/ProfileNft";
 
@@ -83,9 +82,6 @@ const DetailsNft = () => {
               <Cause profile={profile} />
             </div>
 
-            <div className="card-activity-nft">
-              <ItemsActivity profile={profile} />
-            </div>
           </div>
             </div>
          

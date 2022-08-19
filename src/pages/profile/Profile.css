@@ -1,0 +1,11 @@
+.sell-button{ 
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    height: fit-content;
+    padding: 1rem;
+    box-shadow: 0px 0px 5px #393E46;
+    cursor: pointer;
+    z-index: 1;
+}

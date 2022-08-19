@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import GreenButton from '../global/GreenButton';
 import { MdModeEdit } from 'react-icons/md';
 import DarkButton from '../global/DarkButton';
-import PolygonLogo from "../../assets/logo/polygon_logo.png";
 import abi from "../../assets/json/abiNFT.json";
 import Loading from '../global/Loading';
 
@@ -23,8 +22,7 @@ const AddNft = ({setShowAddNft, showAddNft}) => {
     
   const [newNftForm, setNewNftForm] = useState({
     name: '',
-    description: '',
-    price: 0
+    description: ''
   })
     useEffect(() => {
         if (fileInfo.length > 0) {
@@ -51,7 +49,7 @@ const AddNft = ({setShowAddNft, showAddNft}) => {
   }
 
   const handleSubmit = async () => {
-    if(fileInfo.length > 0 && newNftForm.name && newNftForm.description && newNftForm.price > 0){
+    if(fileInfo.length > 0 && newNftForm.name && newNftForm.description){
       setLoading(true);
       let configRequest = {
         type: "post",
@@ -62,13 +60,14 @@ const AddNft = ({setShowAddNft, showAddNft}) => {
       if (response.success) {
         await enableWeb3();
         let dataToSave = {};
+          dataToSave.nftContract = showAddNft.contractAddress;
           dataToSave.owner = user.get("ethAddress");
           dataToSave._tokenURI = response.nft;
-          console.log(dataToSave)
+          dataToSave.nftMarketPlace = showAddNft.marketAddress;
           let options = {
             abi: abi,
-            contractAddress: showAddNft,
-            functionName: "createCollectible",
+            contractAddress: '0xD2a1b54a585e12be61B24101CD864b51dF348232',
+            functionName: "createCollectibleAndApproveMarket",
             params: dataToSave,
           };
           fetch({
@@ -90,7 +89,7 @@ const AddNft = ({setShowAddNft, showAddNft}) => {
         setLoading(false);
       }
     }else{
-      message.error('Image, Title, Description and Price are required fields.')
+      message.error('Image, Title, Description are required fields.')
     }
   }
   return (
@@ -129,21 +128,6 @@ const AddNft = ({setShowAddNft, showAddNft}) => {
         <div className="add-post-form">
           <Input name='name' onChange={handleChange} className="add-post-title" placeholder="NFT title *" />
           <Input.TextArea name='description' onChange={handleChange} className="add-post-title add-post-description" rows={8} placeholder="NFT description *" />
-          <Input
-                name="price"
-                type="number"
-                step={0.01}
-                onChange={handleChange}
-                className="add-post-title-with-addon"
-                placeholder="Price *"
-                addonAfter={
-                  <img
-                    className="polygon-logo-new-cause"
-                    src={PolygonLogo}
-                    alt="Polygon logo"
-                  />
-                }
-              />
           
           <br /> <br />
         <div className="d-flex justify-end add-new-post-buttons">

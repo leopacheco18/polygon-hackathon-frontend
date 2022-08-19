@@ -41,6 +41,10 @@ const LayoutOwn = () => {
       navigate('/')
       logout()
     };
+
+    if(e.key === 'profile'){
+      navigate('/profile')
+    }
     
   } 
 

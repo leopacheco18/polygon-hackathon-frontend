@@ -1,0 +1,24 @@
+[{
+    "inputs": [
+      {
+        "internalType": "contract IVotes",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "contract TimelockController",
+        "name": "_timelock",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "nftContract",
+        "type": "address"
+      }
+    ],
+    "name": "createNewDao",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

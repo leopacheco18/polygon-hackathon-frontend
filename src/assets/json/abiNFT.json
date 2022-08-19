@@ -3,6 +3,11 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "nftContract",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
         "name": "owner",
         "type": "address"
       },
@@ -10,16 +15,15 @@
         "internalType": "string",
         "name": "_tokenURI",
         "type": "string"
-      }
-    ],
-    "name": "createCollectible",
-    "outputs": [
+      },
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "nftMarketPlace",
+        "type": "address"
       }
     ],
+    "name": "createCollectibleAndApproveMarket",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   }

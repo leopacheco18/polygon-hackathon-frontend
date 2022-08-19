@@ -129,15 +129,13 @@ const AddNewCause = ({ setShowAddCause }) => {
         // let songsMetadata = [...metadataAllIPFS];
         let options = {
           abi: abi,
-          contractAddress: "0xc6CAF4EF9F35C34621Dcc23F4e7EA821cb912256",
+          contractAddress: "0xD2a1b54a585e12be61B24101CD864b51dF348232",
           functionName: "createNFTContract",
           params: dataToSave,
         };
         fetch({
           params: options,
           onSuccess: (r) => {
-            
-            console.log(r)
             if (r) {
               setLoading(false);
               toast.success("Your cause have been created successfully.");

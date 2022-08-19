@@ -155,6 +155,7 @@
   padding: 20px;
   border-radius: 15px;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .cause-information {
@@ -460,4 +461,11 @@
 .container-ntfs-list{
   gap: 50px;
   padding-bottom: 30px;
+}
+
+.add-smart-contract{ 
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: fit-content;
 }

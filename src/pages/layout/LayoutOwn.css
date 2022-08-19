@@ -137,7 +137,8 @@
   color: #eeeeee;
 }
 
-.modal-foundation-container > .ant-modal-content {
+
+.modal-foundation-container > .ant-modal-content, .modal-price-container > .ant-modal-content {
   background-color: #222831;
   border-radius: 10px;
 }
@@ -225,6 +226,21 @@
 
 }
 
+.modal-price-form {
+  width: 100% !important;
+  padding: 3rem 2rem !important;
+}
+
+.modal-price-form {
+  width: 70%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5rem 0;
+}
+
 .modal-foundation-form {
   width: 70%;
 
@@ -305,4 +321,9 @@
   color: #393e46 !important;
   background-color: unset !important;
   cursor: pointer;
+}
+
+
+.nft-own-list{
+  width: calc(25% - 38px);
 }

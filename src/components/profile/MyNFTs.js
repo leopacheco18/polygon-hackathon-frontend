@@ -4,19 +4,13 @@ import DarkButton from "../global/DarkButton";
 import TextWithTopLine from "../global/TextWithTopLine";
 import Amount from "../../assets/homeUser/logo-amount.png";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import GreenButton from "../global/GreenButton";
-import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
-import abiMarketPlace from '../../assets/json/abiMarketPlace.json';
-import { toast } from "react-toastify";
-import {  message } from "antd";
+import ModalPrice from "./ModalPrice";
 
 const MyNFTs = ({ nfts, setPage, page, setLoading }) => {
   const navigate = useNavigate();
 
   const [newestNFTs, setNewestNFTs] = useState(nfts);
   const [hoverIndex, setHoverIndex] = useState(-1);
-  const {enableWeb3, Moralis} = useMoralis();
-  const { fetch } = useWeb3ExecuteFunction();
 
   useEffect(() => {
     setNewestNFTs(nfts);
@@ -26,82 +20,18 @@ const MyNFTs = ({ nfts, setPage, page, setLoading }) => {
     navigate(`/details-nft/${address}/${tokenId}`);
   };
 
-  const checkfunction = async (nft) => {
-    setLoading(true);
-    await enableWeb3();
-    let options = {
-      abi: abiMarketPlace,
-      contractAddress: '0x3ef91d1ffea077a281a02b92031e2e48a2164471',
-      functionName: "getListing",
-      params: {
-        nftAddress: '0x8ada32f4940e3b903637d60e5aab26124d90b270',
-        tokenId: nft.uid
-      },
-    };
-    fetch({
-      params: options,
-      onSuccess: (r) => {
-        console.log(r)
-        if (r) {
-          setLoading(false);
-          toast.success("Your NFT is now on sell.");
-        }
-      },
-      onError: (error) => {
-        console.log(error)
-        setLoading(false);
-        message.error(error.message);
-      },
-    });
-  }
-
-  const sellItem = async (nft) => { 
-    setLoading(true);
-    await enableWeb3();
-    let options = {
-      abi: abiMarketPlace,
-      contractAddress: nft.marketAddress,
-      functionName: "listItem",
-      params: {
-        nftAddress: nft.nftContract,
-        tokenId: nft.uid,
-        price:  Moralis.Units.ETH("0.5")
-      },
-    };
-    
-    
-    fetch({
-      params: options,
-      onSuccess: (r) => {
-        console.log(r)
-        if (r) {
-          setLoading(false);
-          toast.success("Your NFT is now on sell.");
-        }
-      },
-      onError: (error) => {
-        console.log(error)
-        setLoading(false);
-        message.error(error.message);
-      },
-    });
-  }
+  
 
   const renderedMyNFT = Object.values(newestNFTs).map((nft, i) => {
     return (
       <div
         key={i}
-        className="w-100 container-nft position-relative"
+        className="nft-own-list container-nft position-relative"
         onMouseOver={() => setHoverIndex(i)}
         onMouseOut={() => setHoverIndex(-1)}
         style={{ borderRadius: hoverIndex === i ? "10px 10px 0 0" : "10px" }}
       >
-        <GreenButton
-          className="sell-button"
-          onClick={() => sellItem(nft)}
-        >
-          Sell
-        </GreenButton>
+        <ModalPrice nft={nft} setLoading={setLoading} />
 
         <div className="w-100" 
         onClick={() => redirectToDetailsNFT(nft?.address, nft?.tokenId)}>

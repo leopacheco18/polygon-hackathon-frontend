@@ -7,7 +7,9 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Amount from "../../assets/homeUser/logo-amount.png";
 import Loading from "../global/Loading";
 import { RiArrowGoBackFill } from "react-icons/ri";
-const itemPerPages = 3;
+import { useMoralis } from "react-moralis";
+import abiMarketPlace from "../../assets/json/abiMarketPlace.json";
+const itemPerPages = 4;
 
 const NFTCause = ({ setShowNFT, showNFT }) => {
   const [nftList, setNftList] = useState([]);
@@ -17,6 +19,7 @@ const NFTCause = ({ setShowNFT, showNFT }) => {
   const [page, setPage] = useState(1);
   const { request } = useHttp();
   const navigate = useNavigate();
+  const { enableWeb3, Moralis } = useMoralis();
 
   useEffect(() => {
     getNftList();
@@ -38,17 +41,28 @@ const NFTCause = ({ setShowNFT, showNFT }) => {
     };
     const response = await request(configRequest);
     if (response.success) {
-      let nftArr = [...response.nfts];
-      for (let i = 0; i < nftArr.length; i++) {
-        let urlArr = nftArr[i].tokenUri.split("/");
-        let ipfsHash = urlArr[urlArr.length - 1];
-        let url = `https://gateway.moralisipfs.com/ipfs/${ipfsHash}`;
-        let response = await fetch(url);
-        let jsonToAdd = await response.json();
-        nftArr[i].data = jsonToAdd;
+      await enableWeb3();
+      for (let i = 0; i < response.nfts.length; i++) {
+        const readOptions = {
+          contractAddress: response.nfts[i].marketAddress,
+          functionName: "getListing",
+          abi: abiMarketPlace,
+          params: {
+            nftAddress: response.nfts[i].address,
+            tokenId: response.nfts[i].tokenId,
+          },
+        };
+        let status = await Moralis.executeFunction(readOptions);
+        response.nfts[i].status = false;
+        if (
+          status["seller"] &&
+          status["seller"] !== "0x0000000000000000000000000000000000000000"
+        ) {
+          response.nfts[i].status = true;
+          response.nfts[i].price = Moralis.Units.FromWei(status["price"]);
+        }
       }
-      console.log(nftArr);
-      setNftList(nftArr);
+      setNftList(response.nfts);
     }
     setLoading(false);
   };
@@ -73,7 +87,7 @@ const NFTCause = ({ setShowNFT, showNFT }) => {
       return (
         <div
           key={i}
-          className="w-30 container-nft"
+          className="nft-own-list container-nft"
           onClick={() => redirectToDetailsNFT(nft?.address, nft?.uid)}
           onMouseOver={() => setHoverIndex(i)}
           onMouseOut={() => setHoverIndex(-1)}
@@ -81,37 +95,39 @@ const NFTCause = ({ setShowNFT, showNFT }) => {
         >
           <div className="w-100">
             <img
-              src={nft?.data?.animation_url}
+              src={nft?.img}
               alt="nft-detail"
               className="w-100 image-nft"
             />
           </div>
           <div className="info-card-nft w-100 d-flex flex-column">
             <div className="d-flex flex-row justify-space-between align-center">
-              <p className="card-nft-title mb-0">{nft?.data?.name}</p>
+              <p className="card-nft-title mb-0">{nft?.title}</p>
+             {nft.status && 
               <div className="card-nft-amount d-flex flex-row">
-                <p>price</p>
-                <img
-                  src={Amount}
-                  className="card-nft-image-logo-amount"
-                  alt="logo-price"
-                />
-              </div>
+              <p>{nft.price}</p>
+              <img
+                src={Amount}
+                className="card-nft-image-logo-amount"
+                alt="logo-price"
+              />
+            </div>
+             }
             </div>
           </div>
-          {/* <div className="card-nft-status">
+          <div className="card-nft-status">
                 <button className={`w-100 card-button-nft ${nft.status ? 'button-nft-available' : 'button-nft-unavailable'} ${hoverIndex === i && 'card-button-nft-show'}`} >
-                    {nft.status ? 'Buy Now' : 'Not available'}
+                    {nft.status ? 'Buy Now' : 'Not for sell'}
                 </button>
-            </div> */}
+            </div>
         </div>
       );
     });
 
   return (
-    <div className="d-flex posts-card w-100">
-    {loading && <Loading />}
-      <div className="w-100 post">
+    <div className="d-flex card-nfts w-100">
+      {loading && <Loading />}
+      <div className="w-95 post">
         <div className="d-flex card-nfts-pagination w-100 ">
           <DarkButton
             fontSize={"1rem"}
@@ -119,7 +135,7 @@ const NFTCause = ({ setShowNFT, showNFT }) => {
             borderRadius={"5px"}
             onClick={() => setShowNFT(false)}
           >
-          <RiArrowGoBackFill />
+            <RiArrowGoBackFill />
           </DarkButton>
           <DarkButton
             fontSize={"1rem"}
@@ -138,7 +154,7 @@ const NFTCause = ({ setShowNFT, showNFT }) => {
             <RightOutlined />
           </DarkButton>
         </div>
-        <div className="w-100 flex-wrap container-ntfs-list d-flex align-start">
+        <div className="w-100 flex-wrap container-ntfs-list d-flex align-stretch">
           {renderedNFTList}
         </div>
       </div>

@@ -117,6 +117,15 @@ body::-webkit-scrollbar-thumb {
   flex-direction : column;
 }
 
+
+.nft-price-actual-price-image{
+  margin-right: 5px;
+}
+
+.align-stretch{
+  align-items: stretch;
+}
+
 .align-start{
   align-items: flex-start;
 }

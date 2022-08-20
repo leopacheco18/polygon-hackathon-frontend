@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import useHttp from '../../hooks/useHttp';
+import React, { useEffect, useState } from "react";
+import useHttp from "../../hooks/useHttp";
 import "./Profile.css";
 import { useMoralis } from "react-moralis";
 import abiMarketPlace from "../../assets/json/abiMarketPlace.json";
-import Loading from '../../components/global/Loading';
-import BGHomeUser from '../../components/homeUser/BGHomeUser';
-import MyNFTs from '../../components/profile/MyNFTs';
+import abiNFT from "../../assets/json/abiNFT.json";
+import Loading from "../../components/global/Loading";
+import BGHomeUser from "../../components/homeUser/BGHomeUser";
+import MyNFTs from "../../components/profile/MyNFTs";
 
 const itemPerPages = 4;
 
 const Profile = () => {
-  
-  const {user, enableWeb3, Moralis} =useMoralis();
+  const { user, enableWeb3, Moralis } = useMoralis();
   const [nftList, setNftList] = useState([]);
   const [nftListShow, setNftListShow] = useState([]);
-  
+
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const { request } = useHttp();
   useEffect(() => {
-
     // call function get newest nfts and save that in a variable
     getNfts();
-  }, [])
+  }, []);
 
   useEffect(() => {
     changePage();
@@ -32,35 +31,52 @@ const Profile = () => {
     setLoading(true);
     let configRequest = {
       type: "get",
-      endpoint: `nft/get-nft-from-wallet/${user.get('ethAddress')}`,
+      endpoint: `nft/get-nft-from-wallet/${user.get("ethAddress")}`,
     };
     const response = await request(configRequest);
     if (response.success) {
       await enableWeb3();
-      for(let i = 0; i < response.nfts.length; i++){
-        const readOptions = {
-          contractAddress: response.nfts[i].marketAddress,
-          functionName: "getListing",
-          abi: abiMarketPlace,
+      for (let i = 0; i < response.nfts.length; i++) {
+        const readOptionsApproved = {
+          contractAddress: response.nfts[i].nftContract,
+          functionName: "getApproved",
+          abi: abiNFT,
           params: {
-              nftAddress: response.nfts[i].address ,
-              tokenId: response.nfts[i].tokenId
-          }
+            tokenId: response.nfts[i].tokenId,
+          },
         };
-        let status = await Moralis.executeFunction(readOptions);
+        let getApproved = await Moralis.executeFunction(readOptionsApproved);
+        response.nfts[i].isApproved = false;
         response.nfts[i].status = false;
-        if(status['seller']){
-          response.nfts[i].status = true;
-          
-          response.nfts[i].price = Moralis.Units.FromWei(status['price']);
+        if (getApproved !== "0x0000000000000000000000000000000000000000") {
+          response.nfts[i].isApproved = true;
+          const readOptions = {
+            contractAddress: response.nfts[i].marketAddress,
+            functionName: "getListing",
+            abi: abiMarketPlace,
+            params: {
+              nftAddress: response.nfts[i].address,
+              tokenId: response.nfts[i].tokenId,
+            },
+          };
+          let status = await Moralis.executeFunction(readOptions);
+  
+          if (
+            status["seller"] &&
+            status["seller"] !== "0x0000000000000000000000000000000000000000"
+          ) {
+            response.nfts[i].status = true;
+            response.nfts[i].price = Moralis.Units.FromWei(status["price"]);
+          }
         }
+
+        
       }
-     
-      
+
       setNftList(response.nfts);
     }
     setLoading(false);
-  }
+  };
 
   const changePage = () => {
     let arr = [...nftList];
@@ -77,17 +93,19 @@ const Profile = () => {
   };
 
   return (
-    <div className='container'>
-      
-    {loading && <Loading />}
+    <div className="container">
+      {loading && <Loading />}
       <BGHomeUser />
-      {nftListShow.length > 0 && 
-      <MyNFTs nfts={nftListShow} setPage={setPage} page={page} setLoading={setLoading} />
-      
-      }
-
+      {nftListShow.length > 0 && (
+        <MyNFTs
+          nfts={nftListShow}
+          setPage={setPage}
+          page={page}
+          setLoading={setLoading}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

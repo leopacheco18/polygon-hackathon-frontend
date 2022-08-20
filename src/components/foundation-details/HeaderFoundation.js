@@ -17,12 +17,6 @@ const HeaderFoundation = ({ foundation, isOwner, showAddCause, setShowAddCause, 
           <div className="w-70 profile-foundation-header-name">
             <h2>{foundation?.name}</h2>
             <div className="profile-foundation-options">
-              <GreenButton>
-                <div>
-                  <MdMarkEmailUnread />
-                </div>
-                Subscribe
-              </GreenButton>
               {isOwner && (
                 <>
                 {!showAddPost &&

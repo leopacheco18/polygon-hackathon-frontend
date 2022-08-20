@@ -34,12 +34,14 @@ const NewestNFT = ({ nfts, setPage, page }) => {
                         < p className="card-nft-title mb-0">
                             {nft.title}
                         </p>
+                       {nft.status &&
                         <div className="card-nft-amount d-flex flex-row">
-                            <p>
-                                {nft.price}
-                            </p>
-                            <img src={Amount} className="card-nft-image-logo-amount" alt="logo-price" />
-                        </div>
+                        <p>
+                            {nft.price}
+                        </p>
+                        <img src={Amount} className="card-nft-image-logo-amount" alt="logo-price" />
+                    </div>
+                       }
                     </div>
                     <div className="card-nft-foundation d-flex flex-row">
                         <img src={nft.logo_foundation} className="card-nft-image-logo-foundation" alt="logo-price" />
@@ -50,7 +52,7 @@ const NewestNFT = ({ nfts, setPage, page }) => {
                 </div>
                 <div className="card-nft-status">
                     <button className={`w-100 card-button-nft ${nft.status ? 'button-nft-available' : 'button-nft-unavailable'} ${hoverIndex === i && 'card-button-nft-show'}`} >
-                        {nft.status ? 'Buy Now' : 'Not available'}
+                        {nft.status ? 'Buy Now' : 'Not For Sell'}
                     </button>
                 </div>
             </div>
@@ -65,7 +67,7 @@ const NewestNFT = ({ nfts, setPage, page }) => {
                     <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"} onClick={() => setPage(page - 1)}> <LeftOutlined /> </DarkButton>
                     <DarkButton fontSize={'1rem'} padding="3px 6px" borderRadius={"5px"} onClick={() => setPage(page + 1)}> <RightOutlined /> </DarkButton>
                 </div>
-                <div className="w-95 container-ntfs-list d-flex  align-start">
+                <div className="w-95 container-ntfs-list d-flex  align-stretch">
                     {renderedNewestNFT}
                 </div>
             </div>

@@ -13,6 +13,8 @@ import useHttp from "../../hooks/useHttp";
 import DarkButton from "../../components/global/DarkButton";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Loading from "../../components/global/Loading";
+import abiMarketPlace from "../../assets/json/abiMarketPlace.json";
+import { useMoralis } from "react-moralis";
 
 const DetailsNft = () => {
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ const DetailsNft = () => {
   const { address, tokenId } = useParams();
   const { request } = useHttp();
   const [loading, setLoading] = useState(false);
+  const { enableWeb3, Moralis } = useMoralis();
 
   useEffect(() => {
     getNft();
@@ -34,6 +37,23 @@ const DetailsNft = () => {
     };
     const response = await request(configRequest);
     if (response.success) {
+
+      await enableWeb3();
+      const readOptions = {
+        contractAddress: response.nft.marketAddress,
+        functionName: "getListing",
+        abi: abiMarketPlace,
+        params: {
+          nftAddress: response.nft.address,
+          tokenId: response.nft.tokenId,
+        },
+      };
+      let status = await Moralis.executeFunction(readOptions);
+      response.nft.status = false;
+      if (status["seller"] && status["seller"] !== '0x0000000000000000000000000000000000000000') {
+        response.nft.status = true;
+        response.nft.price = Moralis.Units.FromWei(status["price"]);
+      }
       setProfile(response.nft);
     }
     setLoading(false);

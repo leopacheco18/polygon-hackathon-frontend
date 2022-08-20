@@ -105,9 +105,6 @@
     margin-top : 10px;
 }
 
-.nft-price-actual-price-image{
-    margin-right: 5px;
-}
 
 .container-nft-price-button{
     margin-top : 20px;
@@ -121,6 +118,17 @@
     width : 90%;
     font-size : 12px;
     padding: 5px 0px;
+}
+
+.nft-price-button-available{ 
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.nft-price-button-available:hover{
+    background-color: #00ADB5;
+    color: #222831;
+    transition: all 0.5s;
 }
 
 .container-nft-cause{

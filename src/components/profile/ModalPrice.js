@@ -19,12 +19,19 @@ const ModalPrice = ({ nft, setLoading }) => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    setPrice(0)
   };
   const sellItem = async () => {
+    if(!nft.confirmed){
+      
+      message.error('The NFT is not confirmed yet, please wait a few minutes.')
+      return
+    }
     if(price <= 0){
         message.error('Price value is not valid.')
         return
     }
+
     setLoading(true);
     await enableWeb3();
     let options = {
@@ -41,9 +48,9 @@ const ModalPrice = ({ nft, setLoading }) => {
     fetch({
       params: options,
       onSuccess: (r) => {
-        console.log(r);
         if (r) {
           setLoading(false);
+          handleCancel();
           toast.success("Your NFT is now on sell.");
         }
       },
@@ -76,6 +83,7 @@ const ModalPrice = ({ nft, setLoading }) => {
             name="price"
             type="number"
             step={0.01}
+            value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder="Price in Matic..."
             prefix={<DollarCircleOutlined />}

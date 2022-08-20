@@ -18,6 +18,10 @@ import abi from "../../assets/json/abiFactory.json";
 import PolygonLogo from "../../assets/logo/polygon_logo.png";
 import Loading from "../global/Loading";
 
+var result = new Date();
+result = new Date(
+  result.getTime() + Math.abs(result.getTimezoneOffset() * 60000)
+);
 const AddNewCause = ({ setShowAddCause }) => {
   const [fileInfo, setFileInfo] = useState([]);
   const { enableWeb3 } = useMoralis();
@@ -31,12 +35,14 @@ const AddNewCause = ({ setShowAddCause }) => {
   const [newCauseForm, setNewCauseForm] = useState({
     title: "",
     goal: 0,
-    initialDate: null,
+    initialDate: result.toISOString().split("T")[0],
     dueDate: null,
     duration: null,
     stepDivition: null,
     image: null,
   });
+
+
   useEffect(() => {
     if (fileInfo.length > 0) {
       getBase64(fileInfo[0].file);
@@ -217,7 +223,7 @@ const AddNewCause = ({ setShowAddCause }) => {
           className={`step-container ${i === stepIndex && "step-selected"}`}
           onClick={() => setStepIndex(i)}
         >
-          <RiFootprintFill /> {labelStep} {i + 1}{" "}
+          <RiFootprintFill /> {labelStep} {i + 1}
         </div>
       );
     }
@@ -362,11 +368,13 @@ const AddNewCause = ({ setShowAddCause }) => {
                   />
                 }
               />
+              
+              <label className="label-disabled">Initial Date</label>
               <Input
                 name="initialDate"
                 type="text"
-                defaultValue={newCauseForm.initialDate}
-                onChange={handleChange}
+                value={newCauseForm.initialDate}
+                disabled
                 className="add-post-title add-post-title-margin"
                 placeholder="Initial Date *"
                 onFocus={(e) => (e.target.type = "date")}

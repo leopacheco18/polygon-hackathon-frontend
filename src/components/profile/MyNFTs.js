@@ -5,12 +5,17 @@ import TextWithTopLine from "../global/TextWithTopLine";
 import Amount from "../../assets/homeUser/logo-amount.png";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ModalPrice from "./ModalPrice";
+import GreenButton from "../global/GreenButton";
+import { useMoralis } from "react-moralis";
+import abiMarketPlace from "../../assets/json/abiMarketPlace.json";
+import { toast } from "react-toastify";
+import { message } from "antd";
 
 const MyNFTs = ({ nfts, setPage, page, setLoading }) => {
   const navigate = useNavigate();
+  const {enableWeb3} =useMoralis();
 
   const [newestNFTs, setNewestNFTs] = useState(nfts);
-  const [hoverIndex, setHoverIndex] = useState(-1);
 
   useEffect(() => {
     setNewestNFTs(nfts);
@@ -20,6 +25,36 @@ const MyNFTs = ({ nfts, setPage, page, setLoading }) => {
     navigate(`/details-nft/${address}/${tokenId}`);
   };
 
+
+  const stopSelling = async (nft) => {
+    setLoading(true);
+    console.log(2)
+    await enableWeb3();
+    let options = {
+      abi: abiMarketPlace,
+      contractAddress: nft.marketAddress,
+      functionName: "cancelListing",
+      params: {
+        nftAddress: nft.nftContract,
+        tokenId: nft.uid
+      },
+    };
+    console.log(1)
+    fetch({
+      params: options,
+      onSuccess: (r) => {
+        console.log("aqui")  
+        if (r) {
+          setLoading(false);
+          toast.success("Your Dao have been created successfully.");
+        }
+      },
+      onError: (error) => {
+        setLoading(false);
+        message.error(error.message);
+      },
+    });
+  }
   
 
   const renderedMyNFT = Object.values(newestNFTs).map((nft, i) => {
@@ -27,11 +62,17 @@ const MyNFTs = ({ nfts, setPage, page, setLoading }) => {
       <div
         key={i}
         className="nft-own-list container-nft position-relative"
-        onMouseOver={() => setHoverIndex(i)}
-        onMouseOut={() => setHoverIndex(-1)}
-        style={{ borderRadius: hoverIndex === i ? "10px 10px 0 0" : "10px" }}
+        style={{ borderRadius: "10px" }}
       >
+        {nft.status ?
+        <GreenButton className="stop-sell-button" onClick={() => stopSelling(nft)}>
+        Stop Selling
+      </GreenButton>
+
+        :
         <ModalPrice nft={nft} setLoading={setLoading} />
+        
+        }
 
         <div className="w-100" 
         onClick={() => redirectToDetailsNFT(nft?.address, nft?.tokenId)}>
@@ -59,15 +100,6 @@ const MyNFTs = ({ nfts, setPage, page, setLoading }) => {
               {nft.name_foundation}
             </p>
           </div>
-        </div>
-        <div className="card-nft-status">
-          <button
-            className={`w-100 card-button-nft ${
-              nft.status ? "button-nft-available" : "button-nft-unavailable"
-            } ${hoverIndex === i && "card-button-nft-show"}`}
-          >
-            {nft.status ? "Buy Now" : "Not available"}
-          </button>
         </div>
       </div>
     );

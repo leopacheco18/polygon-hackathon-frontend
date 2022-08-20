@@ -12,10 +12,11 @@ phases:
       - npm cache clean --force
       - rm -rf node_modules package-lock.json
       - npm install --force
+      - npm run build
   build:
     on-failure: ABORT
     commands:
-      - npm run build
+      #- npm run build --force
   post_build:
     commands:
       - echo Build completed on `date`

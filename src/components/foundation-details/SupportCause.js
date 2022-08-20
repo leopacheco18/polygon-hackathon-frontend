@@ -248,9 +248,6 @@ const SupportCause = ({
     };
     fetch({
       params: options,
-      onComplete: (r) => {
-        console.log('onComplete', r)
-      },
       onSuccess: (r) => {
         console.log(r)
         if (r) {

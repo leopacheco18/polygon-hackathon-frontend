@@ -125,3 +125,72 @@
 }
 
 
+@media only screen and (max-width: 800px) {
+    .home-container{ 
+        width: 100% !important;
+    }
+    .team-card-list{
+        flex-wrap: wrap;
+    }
+    .home-card-content {
+        padding: 5vw !important;
+    }
+    .home-card-content > p, .home-overview-content  > p {
+        margin-top: 2rem !important;
+        font-size: 1rem !important;
+        font-weight: 300;
+        text-align: center !important;
+    }
+    .home-card-content > h1{
+        text-align: center;
+        font-size: 1.25rem !important;
+        font-weight: 600;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        color: white;
+    }
+    .home-card{
+        flex-wrap: wrap;
+        margin-top: 0 !important;
+    }
+    .home-card > div{
+        width: 100%;
+    }
+    .home-card-image{
+         min-height: 30vh;
+    }
+
+    .container-header{
+        flex-wrap: wrap;
+    }
+
+    .logo-container{
+        padding: 1rem 15vw !important;
+    }
+
+    .home-metamask-button{
+        padding: 0 !important;
+    }
+    .home-metamask-button > .dark-button{
+        
+        width: 100%;
+    }
+    .container-header > div{
+        width: 100%;
+    }
+
+    .home-overview{
+        flex-wrap: wrap;
+        margin-top: 5rem !important;
+    }
+    .home-overview > div{
+        width: 100%;
+    }
+    .our-team-container{
+        margin-top: 5rem !important;
+    }
+
+    .team-card-container{
+        
+        margin: 1rem 0 !important;
+    }
+  }

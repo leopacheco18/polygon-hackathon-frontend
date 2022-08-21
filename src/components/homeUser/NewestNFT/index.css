@@ -103,3 +103,14 @@
     gap: 50px;
     padding-bottom: 30px;
 }
+
+@media only screen and (max-width: 800px) {
+    .container-ntfs-list{
+        flex-direction: column;
+        gap: 50px;
+        padding-bottom: 30px;
+    }
+    .container-ntfs-list > div{
+        width: 100%;
+    }
+ }

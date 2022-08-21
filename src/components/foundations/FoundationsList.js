@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import countryList from "../../assets/json/countries.json"
 const itemPerPages = 6;
 const FoundationsList = ({ foundationsElements }) => {
+  
   const [foundations, setFoundations] = useState([]);
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [page, setPage] = useState(1);
@@ -115,7 +116,7 @@ const filterFoundations = (returnArr = false) => {
 
   return (
     <div className="container-nfs">
-      <div className="d-flex justify-space-between align-end">
+      <div className="d-flex justify-space-between align-end foundations-header">
         <TextWithTopLine padding={"1rem 0"} fontSize="1.25rem" fontWeight={600}>
           Foundations
         </TextWithTopLine>

@@ -37,7 +37,7 @@ const Home = () => {
   return (
    <>
     <div className="home-container">
-      <div className="d-flex">
+      <div className="d-flex container-header">
         <div className="w-15 logo-container">
           <Logo />
         </div>

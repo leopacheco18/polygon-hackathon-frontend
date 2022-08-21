@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 import { Dropdown, Layout, Menu } from "antd";
 import { useMoralis } from "react-moralis";
@@ -11,12 +17,13 @@ import DonatyLogoMedium from "../../assets/logo/logo_medium.png";
 
 import "./LayoutOwn.css";
 import ModalFoundation from "../../components/layout/ModalFoundation";
-import {  DownOutlined, UserOutlined, LogoutOutlined} from '@ant-design/icons';
+import { DownOutlined, UserOutlined, LogoutOutlined } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
 const LayoutOwn = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const { logout,  user  } = useMoralis();
+  const isMobile = () => window.matchMedia("(max-width: 800px)").matches;
+  const [isCollapsed, setIsCollapsed] = useState(isMobile());
+  const { logout, user } = useMoralis();
   const location = useLocation();
   const navigate = useNavigate();
   // const ListItemLink = ({ to, ...rest }) => {
@@ -37,16 +44,15 @@ const LayoutOwn = () => {
   };
 
   const validateOption = (e) => {
-    if(e.key === 'logout'){
-      navigate('/')
-      logout()
-    };
-
-    if(e.key === 'profile'){
-      navigate('/profile')
+    if (e.key === "logout") {
+      navigate("/");
+      logout();
     }
-    
-  } 
+
+    if (e.key === "profile") {
+      navigate("/profile");
+    }
+  };
 
   const menu = (
     <Menu
@@ -54,15 +60,15 @@ const LayoutOwn = () => {
       className="menu-own"
       items={[
         {
-          label: 'Profile',
-          key: 'profile',
+          label: "Profile",
+          key: "profile",
           icon: <UserOutlined />,
         },
         {
-          label: 'LogOut',
-          key: 'logout',
+          label: "LogOut",
+          key: "logout",
           icon: <LogoutOutlined />,
-        }
+        },
       ]}
     />
   );
@@ -75,9 +81,9 @@ const LayoutOwn = () => {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(user.get("ethAddress"))
-    toast.success('Copy wallet to clipboard')
-  }
+    navigator.clipboard.writeText(user.get("ethAddress"));
+    toast.success("Copy wallet to clipboard");
+  };
 
   return (
     <Layout>
@@ -86,65 +92,119 @@ const LayoutOwn = () => {
         onCollapse={(val) => setIsCollapsed(val)}
         collapsed={isCollapsed}
         collapsible={true}
-        width="17.5vw"
+        width={isMobile() ? "80vw" : "17.5vw"}
       >
-        <div className={`d-flex justify-center align-center donaty-logos ${isCollapsed ? 'w-100' : 'w-70'}`}>
+        <div
+          className={`d-flex justify-center align-center donaty-logos ${
+            isCollapsed ? "w-100" : "w-70"
+          }`}
+        >
           <img
-            className={`donaty-logo-medium ${isCollapsed ? 'w-50' : 'w-20'}`}
+            className={`donaty-logo-medium ${isCollapsed ? "w-50" : "w-20"}`}
             src={DonatyLogoMedium}
             alt="donaty-logo"
           />
-          {!isCollapsed && 
-          <img
-            className="w-40 donaty-logo-letter"
-            src={DonatyLogoLetter}
-            alt="donaty-logo"
-          />
-          }
+          {!isCollapsed && (
+            <img
+              className="w-40 donaty-logo-letter"
+              src={DonatyLogoLetter}
+              alt="donaty-logo"
+            />
+          )}
         </div>
         <div>
           {authProtectedRoutes.map((route, index, row) => {
-            return route.isAvailableInMenu && (
-              <Link
-                key={index}
-                to={route.path}
-                className="d-flex justify-center"
-              >
-                <div
-                  className={`d-flex flex-row route w-80 ${
-                    isActive(route.path) ?  "route-active" : ""
-                  }  ${
-                    isCollapsed ?  "route-logo-small" : ""
-                  }`}
+            return (
+              route.isAvailableInMenu && (
+                <Link
+                  key={index}
+                  to={route.path}
+                  className="d-flex justify-center"
                 >
-                  <div className="route-logo">{route.icon}</div>
-                  {!isCollapsed && 
-                  <div className="route-title">{route.title}</div>
-                  }
-                </div>
-              </Link>
+                  <div
+                    className={`d-flex flex-row route w-80 ${
+                      isActive(route.path) ? "route-active" : ""
+                    }  ${isCollapsed ? "route-logo-small" : ""}`}
+                  >
+                    <div className="route-logo">{route.icon}</div>
+                    {!isCollapsed && (
+                      <div className="route-title">{route.title}</div>
+                    )}
+                  </div>
+                </Link>
+              )
             );
           })}
-         <ModalFoundation isCollapsed={isCollapsed} />
+          {isMobile() && (
+            <>
+              <div className="d-flex justify-center">
+                <div
+                  className={`d-flex flex-row route w-80 ${
+                    isCollapsed
+                      ? "route-logo-small route-logo-small-center"
+                      : ""
+                  }`}
+
+                  
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
+                >
+                  <div className="route-logo">
+                    <UserOutlined />
+                  </div>
+                  {!isCollapsed && <div className="route-title">Profile</div>}
+                </div>
+              </div>
+              <div className="d-flex justify-center">
+                <div
+                  className={`d-flex flex-row route w-80 ${
+                    isCollapsed
+                      ? "route-logo-small route-logo-small-center"
+                      : ""
+                  }`}
+                  onClick={() => {
+                    navigate("/");
+      logout();
+                  }}
+                >
+                  <div className="route-logo">
+                    <LogoutOutlined />
+                  </div>
+                  {!isCollapsed && <div className="route-title">Logout</div>}
+                </div>
+              </div>
+            </>
+          )}
+          <ModalFoundation isCollapsed={isCollapsed} />
         </div>
-        {!isCollapsed && <div className="d-flex justify-center rights-reserved">
-          © 2022 | Web Design Donaty | All Rights Reserved
-        </div>}
+        {!isCollapsed && (
+          <div className="d-flex justify-center rights-reserved">
+            © 2022 | Web Design Donaty | All Rights Reserved
+          </div>
+        )}
       </Sider>
       <Layout>
+        { !isMobile() && 
+        
         <Header className="header d-flex align-center justify-end">
-        <Dropdown.Button className="dark-dropdown" onClick={copyToClipboard} overlay={menu} icon={<DownOutlined />}>
-          
-          <div className="d-flex align-center">
-            <div className="logo-header donaty-logo-header">
-              <img src={DonatyLogoMedium} alt="logo-medium" />
+          <Dropdown.Button
+            className="dark-dropdown"
+            onClick={copyToClipboard}
+            overlay={menu}
+            icon={<DownOutlined />}
+          >
+            <div className="d-flex align-center">
+              <div className="logo-header donaty-logo-header">
+                <img src={DonatyLogoMedium} alt="logo-medium" />
+              </div>
+              <div className="wallet-header">
+                {getEllipsisTxt(user.get("ethAddress"), 4)}
+              </div>
             </div>
-            <div className="wallet-header">
-              {getEllipsisTxt(user.get("ethAddress"), 4)}
-            </div>
-          </div>
-    </Dropdown.Button>
+          </Dropdown.Button>
         </Header>
+        }
         <Content>
           <div className="max-height">
             <Routes>

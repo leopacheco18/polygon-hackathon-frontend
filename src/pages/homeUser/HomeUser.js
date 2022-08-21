@@ -21,7 +21,7 @@ const itemPerPages = 4;
 
 const HomeUser = () => {
   
-  const { enableWeb3, Moralis } = useMoralis();
+  const isMobile = () => window.matchMedia("(max-width: 800px)").matches;
   const [nftList, setNftList] = useState([]);
   const [nftListShow, setNftListShow] = useState([]);
   
@@ -46,24 +46,6 @@ const HomeUser = () => {
     };
     const response = await request(configRequest);
     if (response.success) {
-      await enableWeb3();
-      for (let i = 0; i < response.nfts.length; i++) {
-        const readOptions = {
-          contractAddress: response.nfts[i].marketAddress,
-          functionName: "getListing",
-          abi: abiMarketPlace,
-          params: {
-            nftAddress: response.nfts[i].address,
-            tokenId: response.nfts[i].tokenId,
-          },
-        };
-        let status = await Moralis.executeFunction(readOptions);
-        response.nfts[i].status = false;
-        if (status["seller"] && status["seller"] !== '0x0000000000000000000000000000000000000000') {
-          response.nfts[i].status = true;
-          response.nfts[i].price = Moralis.Units.FromWei(status["price"]);
-        }
-      }
       setNftList(response.nfts);
     }
     setLoading(false);
@@ -87,7 +69,9 @@ const HomeUser = () => {
     <div className='container'>
       
     {loading && <Loading />}
+    {!isMobile() && 
       <BGHomeUser />
+    }
       {nftListShow.length > 0 && 
       <NewestNFT nfts={nftListShow} setPage={setPage} page={page} />
       

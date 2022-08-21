@@ -299,7 +299,14 @@
     justify-content: flex-end;
     margin-bottom: 1.5rem;
 }
-.container-ntfs-list{
-    gap: 50px;
-    padding-bottom: 30px;
-}
+
+@media only screen and (max-width: 800px) {
+    .foundations-header{
+        flex-wrap: wrap;
+    }
+
+    .foundations-header > .search-bar{
+        padding: 0 0 1rem;
+        width: 100%;
+    }
+ }

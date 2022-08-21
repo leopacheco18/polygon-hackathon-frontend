@@ -327,3 +327,11 @@
 .nft-own-list{
   width: calc(25% - 38px);
 }
+
+
+@media only screen and (max-width: 800px) {
+  .max-height {
+    min-height: calc(100vh);
+    max-height: calc(100vh);
+  }
+}

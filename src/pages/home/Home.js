@@ -18,8 +18,8 @@ import TextWithTopLine from "../../components/global/TextWithTopLine";
 const team = [
   { img: Altair, name: "Altair", role: "Mobile Developer" },
   { img: Leo, name: "Leo", role: "Frontend Developer" },
-  { img: Crome, name: "Crome", role: "Smart Contract Developer" },
-  { img: Wayner, name: "Wayner", role: "Backend Developer" },
+  { img: Crome, name: "Crome", role: "Smart Contract Developer & Content Creator" },
+  { img: Wayner, name: "Wayner", role: "Cloud Architect & Backend Developer" },
   { img: Mario, name: "Mario", role: "UI/UX Designer" },
 ];
 
@@ -35,68 +35,63 @@ const Home = () => {
   }, [authError]);
 
   return (
-   <>
-    <div className="home-container">
-      <div className="d-flex">
-        <div className="w-15 logo-container">
-          <Logo />
+    <>
+      <div className="home-container">
+        <div className="d-flex">
+          <div className="w-15 logo-container">
+            <Logo />
+          </div>
+          <div className="w-85 text-right d-flex justify-end home-metamask-button">
+            <DarkButton onClick={authenticate}>
+              <img
+                alt="metamask-logo"
+                src={metamaskLogo}
+                className="home-metamask-logo"
+              />
+              Connect your Wallet
+            </DarkButton>
+          </div>
         </div>
-        <div className="w-85 text-right d-flex justify-end home-metamask-button">
-          <DarkButton onClick={authenticate}>
-            <img
-              alt="metamask-logo"
-              src={metamaskLogo}
-              className="home-metamask-logo"
-            />
-            Connect your Wallet
-          </DarkButton>
+        <div className="home-card d-flex">
+          <div className="w-60 ">
+            <div className="home-card-content">
+              <h1>
+                Charity and <br /> Non-profit projects with transparency
+
+              </h1>
+              <p>
+                Bring DeFi to charity organizations and projects,  <br />engaged with Dao systems and NFT Martkets
+                
+              </p>
+            </div>
+          </div>
+          <div className="w-40 home-card-image ">
+            <img src={homeWomen} alt="women" />
+          </div>
         </div>
-      </div>
-      <div className="home-card d-flex">
-        <div className="w-60 ">
-          <div className="home-card-content">
-            <h1>
-              Openness <br /> Charity Projects or Foundations
-            </h1>
+        <div className="d-flex home-overview">
+          <div className="w-40 text-right">
+            <img alt="home-man" src={homeMan} className="w-100" />
+          </div>
+          <div className="w-40 d-flex home-overview-content">
+            <TextWithTopLine>Overview</TextWithTopLine>
             <p>
-              Display your charity project, foundations or donation <br /> cause
-              with transparency
+              Donaty is the ultimate platform for Charities and Non-Profit organizations, allowing entities to create real impact projects on their communities and countries. NFT Artists can contribute to a charity proposal, selling their art and engaging into an Autonomous Decentralized Organization (DAO), NFT owners of each project will vote to decide if the funding is being used correctly as the charity responsible will have to upload regular updates stating the progress of their campaign.
             </p>
           </div>
         </div>
-        <div className="w-40 home-card-image ">
-          <img src={homeWomen} alt="women" />
+        <div className="our-team-container">
+          <TextWithTopLine>Our Team</TextWithTopLine>
+          <div className="d-flex position-relative team-card-list">
+            {team.map((item, index) => (
+              <TeamCard {...item} isTop={index % 2 === 0} key={index} />
+            ))}
+          </div>
         </div>
       </div>
-      <div className="d-flex home-overview">
-        <div className="w-40 text-right">
-          <img alt="home-man" src={homeMan} className="w-100" />
-        </div>
-        <div className="w-40 d-flex home-overview-content">
-         <TextWithTopLine>Overview</TextWithTopLine>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-            turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-            nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-            tellus elit sed risus. Maecenas eget condimentum velit, sit amet
-            feugiat lectus. Class aptent taciti sociosqu ad litora torquent per
-            conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus
-            enim egestas, ac scelerisque ante pulvinar.
-          </p>
-        </div>
+      <div className="home-footer">
+        © 2022 | Web Design MP | All Rights Reserved
       </div>
-      <div className="our-team-container">
-        <TextWithTopLine>Our Team</TextWithTopLine>
-        <div className="d-flex position-relative team-card-list">
-          {team.map((item, index) => (
-            <TeamCard {...item} isTop={index % 2 === 0} key={index} />
-          ))}
-        </div>
-      </div>
-    </div>
-    <div className="home-footer">
-    © 2022 | Web Design MP | All Rights Reserved
-    </div>
     </>
   );
 

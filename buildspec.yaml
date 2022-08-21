@@ -1,33 +1,35 @@
-version: 0.2
-
+version: 0.1
 phases:
-  install:
-    runtime-versions:
-      nodejs: 14.x
   pre_build:
     commands:
-      - echo Build started on `date`
       - echo Installing source NPM dependencies...
-      - npm i --location=global npm@latest
-      - npm cache clean --force
-      - rm -rf node_modules package-lock.json
-      - npm install --force
-      - npm install moralis
-      - npm install react-moralis
-      - npm install stream-http
-      - npm run build
+      - npm install
   build:
-    on-failure: ABORT
     commands:
-      #- npm run build --force
+      - echo Build started on `date`
+      - npm run build
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Deploying to S3
-      - aws s3 cp --recursive ./build s3://donaty-web-app/
+      # copy the contents of /build to S3
+      - aws s3 cp --recursive --acl public-read ./build s3://donaty-web-app/
+      # set the cache-control headers for service-worker.js to prevent
+      # browser caching
+      - >
+        aws s3 cp --acl public-read 
+        --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
+        ./build/service-worker.js s3://donaty-web-app/
+      # set the cache-control headers for index.html to prevent
+      # browser caching
+      - >
+        aws s3 cp --acl public-read 
+        --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
+        ./build/index.html s3://donaty-web-app/
+      # invalidate the CloudFront cache for index.html and service-worker.js
+      # to force CloudFront to update its edge locations with the new versions
+      #- >
+      # aws cloudfront create-invalidation --distribution-id ${Distribution}
+      #--paths /index.html /service-worker.js
 artifacts:
   files:
-    - index.html
-  discard-paths: no
-  base-directory: 'build'
-
+    - "**/*"
+  base-directory: build

@@ -39,7 +39,7 @@ const SupportCause = ({
 
 
   const calculatePercentageProgress = (goal, actual) => {
-    return (100 * parseInt(actual)) / parseInt(goal);
+    return (100 * actual / goal);
   };
 
   useEffect(() => {
@@ -67,10 +67,15 @@ const SupportCause = ({
           };
           let balance = await Moralis.executeFunction(readOptions);
           response.causes[i].balance = Moralis.Units.FromWei(balance._hex);
-          response.causes[i].progress = calculatePercentageProgress(
-            parseFloat(response.causes[i].goal),
-            response.causes[i].balance
-          );
+          if(parseFloat(response.causes[i].balance) >= parseFloat(response.causes[i].goal) ){
+            response.causes[i].progress = 100
+          }else{
+
+            response.causes[i].progress = calculatePercentageProgress(
+              parseFloat(response.causes[i].goal),
+              response.causes[i].balance
+            );
+          }
         }
       }
       setCause(response.causes);

@@ -26,6 +26,10 @@
     font-size : 15px;
     color : #FFFFFF;
     font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
 }
 
 .card-nft-amount{
@@ -59,6 +63,10 @@
     font-size : 15px;
     color : #FFFFFF;
     font-weight: 200;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
 }
 
 .card-button-nft {

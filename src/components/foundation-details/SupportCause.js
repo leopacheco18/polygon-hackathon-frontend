@@ -70,11 +70,10 @@ const SupportCause = ({
           if(parseFloat(response.causes[i].balance) >= parseFloat(response.causes[i].goal) ){
             response.causes[i].progress = 100
           }else{
-
-            response.causes[i].progress = calculatePercentageProgress(
+            response.causes[i].progress = Math.round(calculatePercentageProgress(
               parseFloat(response.causes[i].goal),
               response.causes[i].balance
-            );
+            ));
           }
         }
       }

@@ -9,6 +9,7 @@ import CustomDropzone from "../global/CustomDropzone";
 import useHttp from "../../hooks/useHttp";
 import { toast } from "react-toastify";
 import { useMoralis } from "react-moralis";
+import Loading from "../global/Loading";
 
 const AddPost = ({ setShowAddPost }) => {
   
@@ -17,7 +18,7 @@ const AddPost = ({ setShowAddPost }) => {
     title: '',
     description: ''
   })
-  const { request } = useHttp();
+  const { request, isLoading  } = useHttp();
   const { user } = useMoralis();
   useEffect(() => {
     if (fileInfo.length > 0) {
@@ -63,6 +64,7 @@ const AddPost = ({ setShowAddPost }) => {
 
   return (
     <div>
+      {isLoading && <Loading />}
       <TextWithTopLine padding={"1rem 0"} fontSize="1.25rem" fontWeight={600}>
         Create New Post
       </TextWithTopLine>

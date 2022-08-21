@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AiFillFileText, AiOutlineEnvironment, AiOutlineMail } from "react-icons/ai";
 import countryList from "../../assets/json/countries.json"
 

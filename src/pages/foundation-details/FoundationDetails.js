@@ -32,6 +32,7 @@ const FoundationDetails = () => {
   const [showSteps, setShowSteps] = useState(false);
   const [showNFT, setShowNFT] = useState(false);
 
+  const isMobile = () => window.matchMedia("(max-width: 800px)").matches;
   useEffect(() => {
     // call to get all profile of foundation
     if (!foundation) {
@@ -107,7 +108,7 @@ const FoundationDetails = () => {
               <TextWithTopLine
                 key={key}
                 padding={"1rem 0"}
-                fontSize="1.25rem"
+                fontSize={isMobile() ? '0.9rem' : "1.25rem"}
                 fontWeight={item.isActive ? 600 : 300}
                 borderTop={item.isActive ? null : "5px solid transparent"}
                 onClick={() => setActive(key)}

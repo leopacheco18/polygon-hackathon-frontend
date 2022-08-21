@@ -1,11 +1,12 @@
 import React from "react";
 import { FaHandHoldingHeart } from "react-icons/fa";
-import { MdMarkEmailUnread, MdModeEdit } from "react-icons/md";
+import {  MdModeEdit } from "react-icons/md";
 import GreenButton from "../global/GreenButton";
 
 const HeaderFoundation = ({ foundation, isOwner, showAddCause, setShowAddCause, showAddPost, setShowAddPost }) => {
+  const isMobile = () => window.matchMedia("(max-width: 800px)").matches;
   return (
-    <div className="d-flex">
+    <div className="d-flex profile-foundation-header">
       <div className="w-30">
         <figure className="profile-foundation">
           <img src={foundation?.image} className="back-image" alt="profile" />
@@ -41,9 +42,12 @@ const HeaderFoundation = ({ foundation, isOwner, showAddCause, setShowAddCause, 
               )}
             </div>
           </div>
+          {!isMobile()  && 
+          
           <div className="w-30">
             <FaHandHoldingHeart className="profile-foundation-icon-hand" />
           </div>
+          }
         </div>
       </div>
     </div>

@@ -28,6 +28,8 @@ const SupportCause = ({
   setShowSteps,
   setShowNFT,
 }) => {
+  
+  const isMobile = () => window.matchMedia("(max-width: 800px)").matches;
   const [cause, setCause] = useState([]);
   const { user, enableWeb3 } = useMoralis();
   const [loading, setLoading] = useState(false);
@@ -398,10 +400,12 @@ const SupportCause = ({
                   {item?.initialDate}
                 </div>
               </div>
-
+              {!isMobile() && 
+              
               <div className="d-flex align-center cause-date-progress">
                 <hr className="w-100" />
               </div>
+              }
 
               <div className="cause-date-finish">
                 <div className="mb-5">Due Date</div>

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import useHttp from "../../hooks/useHttp";
 import "./Profile.css";
 import { useMoralis } from "react-moralis";
-import abiMarketPlace from "../../assets/json/abiMarketPlace.json";
-import abiNFT from "../../assets/json/abiNFT.json";
 import Loading from "../../components/global/Loading";
 import BGHomeUser from "../../components/homeUser/BGHomeUser";
 import MyNFTs from "../../components/profile/MyNFTs";
@@ -11,9 +9,10 @@ import MyNFTs from "../../components/profile/MyNFTs";
 const itemPerPages = 4;
 
 const Profile = () => {
-  const { user, enableWeb3, Moralis } = useMoralis();
+  const { user} = useMoralis();
   const [nftList, setNftList] = useState([]);
   const [nftListShow, setNftListShow] = useState([]);
+  const isMobile = () => window.matchMedia("(max-width: 800px)").matches;
 
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -35,44 +34,6 @@ const Profile = () => {
     };
     const response = await request(configRequest);
     if (response.success) {
-      await enableWeb3();
-      for (let i = 0; i < response.nfts.length; i++) {
-        const readOptionsApproved = {
-          contractAddress: response.nfts[i].nftContract,
-          functionName: "getApproved",
-          abi: abiNFT,
-          params: {
-            tokenId: response.nfts[i].tokenId,
-          },
-        };
-        let getApproved = await Moralis.executeFunction(readOptionsApproved);
-        response.nfts[i].isApproved = false;
-        response.nfts[i].status = false;
-        if (getApproved !== "0x0000000000000000000000000000000000000000") {
-          response.nfts[i].isApproved = true;
-          const readOptions = {
-            contractAddress: response.nfts[i].marketAddress,
-            functionName: "getListing",
-            abi: abiMarketPlace,
-            params: {
-              nftAddress: response.nfts[i].address,
-              tokenId: response.nfts[i].tokenId,
-            },
-          };
-          let status = await Moralis.executeFunction(readOptions);
-  
-          if (
-            status["seller"] &&
-            status["seller"] !== "0x0000000000000000000000000000000000000000"
-          ) {
-            response.nfts[i].status = true;
-            response.nfts[i].price = Moralis.Units.FromWei(status["price"]);
-          }
-        }
-
-        
-      }
-
       setNftList(response.nfts);
     }
     setLoading(false);
@@ -95,15 +56,15 @@ const Profile = () => {
   return (
     <div className="container">
       {loading && <Loading />}
+      {!isMobile() && 
       <BGHomeUser />
-      {nftListShow.length > 0 && (
+      }
         <MyNFTs
           nfts={nftListShow}
           setPage={setPage}
           page={page}
           setLoading={setLoading}
         />
-      )}
     </div>
   );
 };

@@ -30,7 +30,7 @@ const ModalPost = ({isModalVisible, handleCancel, post, foundation}) => {
     footer={null}
     className="modal-foundation-container"
   >
-    <div className="d-flex">
+    <div className="d-flex modal-post-content">
       <div className="w-50 modal-post-img-container position-relative">
       <img src={post?.image} alt="img-nft" className="w-100" />
         <div className="modal-foundation-close" onClick={handleCancel}>

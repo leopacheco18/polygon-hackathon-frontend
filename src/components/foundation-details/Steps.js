@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { message } from "antd";
 
 const Steps = ({ setShowSteps, showSteps }) => {
+  const isMobile = () => window.matchMedia("(max-width: 800px)").matches;
   const [arrSteps, setArrSteps] = useState([]);
   const [loading, setLoading] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
@@ -134,9 +135,9 @@ const Steps = ({ setShowSteps, showSteps }) => {
     <div>
       {loading && <Loading />}
       <TextWithTopLine padding={"1rem 0"} fontSize="1.25rem" fontWeight={600}>
-        Create Cause 
+        Steps
       </TextWithTopLine>
-      <div className="d-flex">
+      <div className="d-flex show-steps-container">
         <div className="w-65 about-us-card step-list-left">
           <h2>Steps List</h2>
           <hr /> <br />
@@ -172,9 +173,17 @@ const Steps = ({ setShowSteps, showSteps }) => {
                 {arrSteps[stepIndex]?.initialDate}
               </div>
             </div>
+            {!isMobile() ?  
+            
             <div className="d-flex align-center cause-date-progress">
                 <hr className="w-100" />
-            </div>
+            </div> : 
+            <>
+            <br />
+            <br />
+            <br />
+            </>
+            }
             <div className="cause-date-finish">
               <div className="mb-5">Due Date</div>
               <div className="d-flex align-center cause-date-info">
@@ -183,7 +192,7 @@ const Steps = ({ setShowSteps, showSteps }) => {
               </div>
             </div>
           </div>
-          
+          <br />
           <hr /> <br />
 
           {showSteps.proposalId && dateBetween()  && !hasVote &&

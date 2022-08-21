@@ -170,7 +170,10 @@ const MyNFTs = ({ nfts, setPage, page, setLoading }) => {
           </DarkButton>
         </div>
         <div className="w-95 container-ntfs-list d-flex  align-stretch">
-          {renderedMyNFT}
+          {newestNFTs.length > 0 ? 
+          renderedMyNFT:
+          "You don't have NFT's yet."  
+        }
         </div>
       </div>
     </div>

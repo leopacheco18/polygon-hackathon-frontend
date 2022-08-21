@@ -157,7 +157,7 @@ const ModalFoundation = ({ isCollapsed }) => {
         footer={null}
         className="modal-foundation-container"
       >
-        <div className="d-flex">
+        <div className="d-flex modal-foundation-content">
           <div className="w-50 position-relative">
             <div className="modal-foundation-close" onClick={handleCancel}>
               <CloseOutlined />

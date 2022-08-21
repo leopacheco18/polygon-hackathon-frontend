@@ -37,7 +37,6 @@ const DetailsNft = () => {
     };
     const response = await request(configRequest);
     if (response.success) {
-
       setProfile(response.nft);
     }
     setLoading(false);
@@ -45,50 +44,45 @@ const DetailsNft = () => {
 
   return (
     <div className="container">
-        
       {loading && <Loading />}
       {profile && (
         <div className="w-95 card-details-nft ">
-            
-            
           <DarkButton
-              onClick={() => navigate(-1)}
-              fontWeight={300}
-              fontSize={"0.1rem"}
-              padding="5px 10px 5px 5px"
-              borderRadius={"10px"}
-              margin={'10px'}
-            >
-              <div className="get-back-nft-details">
-                <div className="d-flex align-center">
-                  <RiArrowGoBackFill />
-                </div>
-                Back
+            onClick={() => navigate(-1)}
+            fontWeight={300}
+            fontSize={"0.1rem"}
+            padding="5px 10px 5px 5px"
+            borderRadius={"10px"}
+            margin={"10px"}
+          >
+            <div className="get-back-nft-details">
+              <div className="d-flex align-center">
+                <RiArrowGoBackFill />
               </div>
-            </DarkButton>
-            <div className="d-flex flex-row">
+              Back
+            </div>
+          </DarkButton>
+          <div className="d-flex flex-row details-nft-container">
             <div className="w-50 card-details-nft-container-image">
-            <ProfileNft profile={profile} />
-          </div>
+              <ProfileNft profile={profile} />
+            </div>
 
-          <div className="w-50">
-            <div className="d-flex">
-              <div className="w-60 card-description-nft">
-                <Description profile={profile} />
+            <div className="w-50">
+              <div className="d-flex details-nft-container">
+                <div className="w-60 card-description-nft">
+                  <Description profile={profile} />
+                </div>
+
+                <div className="w-40 card-price-nft">
+                  <Price profile={profile} />
+                </div>
               </div>
 
-              <div className="w-40 card-price-nft">
-                <Price profile={profile} />
+              <div className="card-cause-nft">
+                <Cause profile={profile} />
               </div>
             </div>
-
-            <div className="card-cause-nft">
-              <Cause profile={profile} />
-            </div>
-
           </div>
-            </div>
-         
         </div>
       )}
     </div>

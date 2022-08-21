@@ -228,3 +228,13 @@
     font-weight: 400;
     padding: 0 10px;
   }
+
+  
+@media only screen and (max-width: 800px) {
+    .details-nft-container, .container-nft-profile-principal-info{
+        flex-wrap: wrap;
+    }
+    .details-nft-container > div , .container-nft-profile-principal-info > div{
+        width: 100%;
+    }
+}

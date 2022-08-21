@@ -98,7 +98,7 @@ const AddNft = ({setShowAddNft, showAddNft}) => {
     <TextWithTopLine padding={"1rem 0"} fontSize="1.25rem" fontWeight={600}>
       Support by uploading your NFT
     </TextWithTopLine>
-    <div className="d-flex about-us-card w-100">
+    <div className="d-flex about-us-card w-100 add-nft-container">
       <div className="w-30">
       {fileInfo.length > 0 ? (
                 <>

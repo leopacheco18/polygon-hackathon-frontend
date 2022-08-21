@@ -334,4 +334,20 @@
     min-height: calc(100vh);
     max-height: calc(100vh);
   }
+  .modal-foundation-content {
+    flex-wrap: wrap;
+  }
+  .modal-foundation-content > div{
+    width: 100%;
+  }
+  .modal-foundation-container{
+    width: 80vw !important;
+  }
+  .modal-foundation-form{
+    width: 85%;
+  }
+  .modal-foundation-form > h3{
+    font-size: 1rem
+  }
+  
 }

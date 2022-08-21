@@ -12,6 +12,8 @@ phases:
       - npm cache clean --force
       - rm -rf node_modules package-lock.json
       - npm install --force
+      - npm install moralis
+      - npm install react-moralis
       - npm run build
   build:
     on-failure: ABORT

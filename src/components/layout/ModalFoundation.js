@@ -15,6 +15,7 @@ import countryList from "../../assets/json/countries.json";
 import { toast } from "react-toastify";
 import useHttp from "../../hooks/useHttp";
 import { useMoralis } from "react-moralis";
+import Loading from "../global/Loading";
 
 const errors = {
   name: "Name",
@@ -29,7 +30,7 @@ const ModalFoundation = ({ isCollapsed }) => {
   const [fileInfo, setFileInfo] = useState([]);
   const [hideRegister, setHideRegister] = useState(false);
   const { user } = useMoralis();
-  const { request } = useHttp();
+  const { request , isLoading} = useHttp();
   const [formFoundation, setFormFoundation] = useState({
     name: "",
     email: "",
@@ -128,6 +129,7 @@ const ModalFoundation = ({ isCollapsed }) => {
 
   return (
     <div>
+      {isLoading && <Loading />}
       <div
         className="d-flex justify-center cursor-pointer "
         onClick={showModal}

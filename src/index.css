@@ -211,7 +211,7 @@ body::-webkit-scrollbar-thumb {
   color: #00ADB5;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 10000000;
   font-size: 5rem;
 }
 

@@ -32,7 +32,7 @@ const NewestNFT = ({ nfts, setPage, page }) => {
                 <div className="info-card-nft w-100 d-flex flex-column">
                     <div className="d-flex flex-row justify-space-between" >
                         < p className="card-nft-title mb-0">
-                            {nft.title}
+                            {nft.title.length > 25 ? `${nft.title.slice(0,25)}...` : nft.title}
                         </p>
                        {nft.status &&
                         <div className="card-nft-amount d-flex flex-row">
@@ -46,7 +46,7 @@ const NewestNFT = ({ nfts, setPage, page }) => {
                     <div className="card-nft-foundation d-flex flex-row">
                         <img src={nft.logo_foundation} className="card-nft-image-logo-foundation" alt="logo-price" />
                         < p className="card-nft-name-foundation mb-0">
-                            {nft.name_foundation}
+                            {nft.name_foundation.length > 15 ? `${nft.name_foundation.slice(0,15)}...` : nft.name_foundation}
                         </p>
                     </div>
                 </div>

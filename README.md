@@ -14,6 +14,12 @@ NodeJs Backend Repo
 Flutter App Repo
 [https://github.com/AltairBarahona/Polygon-Hackathon-Flutter](https://github.com/AltairBarahona/Polygon-Hackathon-Flutter)
 
+Figma Web Design
+[https://www.figma.com/file/rLqGHcORtZwFyxtGQaefuD/Donaty?node-id=117%3A469](https://www.figma.com/file/rLqGHcORtZwFyxtGQaefuD/Donaty?node-id=117%3A469)
+
+Figma App Design
+[https://www.figma.com/file/TfqvcPk8P2VP4Zgn1tS4LM/Donaty-Mobile?node-id=0%3A1](https://www.figma.com/file/TfqvcPk8P2VP4Zgn1tS4LM/Donaty-Mobile?node-id=0%3A1)
+
 ## Requirements
 
 * NodeJs >= 16.17.0

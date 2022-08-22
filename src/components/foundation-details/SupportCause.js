@@ -170,7 +170,6 @@ const SupportCause = ({
     const role1 = await fetch({ params: optionsRole1 });
     const role2 = await fetch({ params: optionsRole2 });
     const role3 = await fetch({ params: optionsRole3 });
-    console.log(role1);
 
     let options = {
       abi: abiFactoryTimeLock,
@@ -255,7 +254,6 @@ const SupportCause = ({
     fetch({
       params: options,
       onSuccess: (r) => {
-        console.log(r)
         if (r) {
           setLoading(false);
           toast.success("Your Proposal have been created successfully.");
@@ -363,8 +361,8 @@ const SupportCause = ({
             </div>
 
             <div className="cause-final-goal">
-              Final Goal :{" "}
-              <span className="cause-final-goal-principal">{item?.goal} </span>{" "}
+              Final Goal :
+              <span className="cause-final-goal-principal">{item?.goal} </span>
               <img
                 className="nft-price-actual-price-image"
                 src={Amount}
@@ -374,10 +372,10 @@ const SupportCause = ({
 
             {item.balance && (
               <div className="cause-total-collected">
-                Total Collected :{" "}
+                Total Collected :
                 <span className="cause-total-collected-principal">
-                  {item.balance}{" "}
-                </span>{" "}
+                  {item.balance}
+                </span>
                 <img
                   className="nft-price-actual-price-image"
                   src={Amount}

@@ -76,7 +76,14 @@ const ModalFoundation = ({ isCollapsed }) => {
       console.log('Error: ', error);
     };
  }
- 
+
+ const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
 
   const saveFoundation = async () => {
     if (hideRegister) return;
@@ -91,6 +98,10 @@ const ModalFoundation = ({ isCollapsed }) => {
     if (error) {
       toast.error(errorMessage);
       return;
+    }
+    if(!validateEmail(formFoundation.email)){
+      toast.error('Email is not valid');
+      return
     }
     let configRequest = {
       type: "post",
@@ -189,6 +200,8 @@ const ModalFoundation = ({ isCollapsed }) => {
                     onChange={(e) =>
                       setFormFoundation({ ...formFoundation, country: e })
                     }
+                    filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
+                    showSearch
                   >
                     {Object.keys(countryList).map((key, index) => (
                       <Select.Option value={key} key={index}>

@@ -51,7 +51,6 @@ const Price = ({ profile }) => {
     fetch({
       params: options,
       onSuccess: async (r) => {
-        console.log(r);
         if (r) {
           let configRequest = {
             type: "post",

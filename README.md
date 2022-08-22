@@ -27,6 +27,9 @@ Donaty is the ultimate platform for Charities and Non-Profit organizations, allo
 ## Requirements
 
 * NodeJs >= 16.17.0
+* ChainID -> Mumbai
+
+Note: You can add mumbai network [here](https://chainlist.org/).
 
 ## How to run
 

@@ -5,20 +5,20 @@ Donaty is the ultimate platform for Charities and Non-Profit organizations, allo
 
 ## Important Link
 
-SmartContracts Repo
-[https://github.com/cromewar/Donaty-Smart-Contracts](https://github.com/cromewar/Donaty-Smart-Contracts)
 
-NodeJs Backend Repo
-[https://github.com/WaynerMoya/PolygonHackathonBE](https://github.com/WaynerMoya/PolygonHackathonBE)
+[SmartContracts Repo](https://github.com/cromewar/Donaty-Smart-Contracts)
 
-Flutter App Repo
-[https://github.com/AltairBarahona/Polygon-Hackathon-Flutter](https://github.com/AltairBarahona/Polygon-Hackathon-Flutter)
 
-Figma Web Design
-[https://www.figma.com/file/rLqGHcORtZwFyxtGQaefuD/Donaty?node-id=117%3A469](https://www.figma.com/file/rLqGHcORtZwFyxtGQaefuD/Donaty?node-id=117%3A469)
+[NodeJs Backend Repo](https://github.com/WaynerMoya/PolygonHackathonBE)
 
-Figma App Design
-[https://www.figma.com/file/TfqvcPk8P2VP4Zgn1tS4LM/Donaty-Mobile?node-id=0%3A1](https://www.figma.com/file/TfqvcPk8P2VP4Zgn1tS4LM/Donaty-Mobile?node-id=0%3A1)
+
+[Flutter App Repo](https://github.com/AltairBarahona/Polygon-Hackathon-Flutter)
+
+
+[Figma Web Design](https://www.figma.com/file/rLqGHcORtZwFyxtGQaefuD/Donaty?node-id=117%3A469)
+
+
+[Figma App Design](https://www.figma.com/file/TfqvcPk8P2VP4Zgn1tS4LM/Donaty-Mobile?node-id=0%3A1)
 
 ## Requirements
 

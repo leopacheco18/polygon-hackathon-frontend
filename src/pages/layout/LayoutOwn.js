@@ -17,7 +17,8 @@ import DonatyLogoMedium from "../../assets/logo/logo_medium.png";
 
 import "./LayoutOwn.css";
 import ModalFoundation from "../../components/layout/ModalFoundation";
-import { DownOutlined, UserOutlined, LogoutOutlined } from "@ant-design/icons";
+import { DownOutlined, UserOutlined, LogoutOutlined, DownloadOutlined } from "@ant-design/icons";
+import appMobileAndroid from '../../assets/apk/Donaty.apk';
 
 const { Header, Sider, Content } = Layout;
 const LayoutOwn = () => {
@@ -26,19 +27,6 @@ const LayoutOwn = () => {
   const { logout, user } = useMoralis();
   const location = useLocation();
   const navigate = useNavigate();
-  // const ListItemLink = ({ to, ...rest }) => {
-  //   return (
-  //     <Route
-  //       path={to}
-  //       children={({ match }) => (
-  //         <li className={match ? "active" : ""}>
-  //           <Link to={to} {...rest} />
-  //         </li>
-  //       )}
-  //     />
-  //   );
-  // };
-
   const isActive = (path) => {
     return location.pathname === path;
   };
@@ -144,8 +132,6 @@ const LayoutOwn = () => {
                       ? "route-logo-small route-logo-small-center"
                       : ""
                   }`}
-
-                  
                   onClick={() => {
                     navigate("/profile");
                   }}
@@ -165,7 +151,7 @@ const LayoutOwn = () => {
                   }`}
                   onClick={() => {
                     navigate("/");
-      logout();
+                    logout();
                   }}
                 >
                   <div className="route-logo">
@@ -177,6 +163,21 @@ const LayoutOwn = () => {
             </>
           )}
           <ModalFoundation isCollapsed={isCollapsed} />
+          <a
+                  href={appMobileAndroid}
+                  className="d-flex justify-center"
+                  target="_blank" download rel="noreferrer"
+                >
+                  <div
+                    className={`d-flex flex-row route w-80  ${isCollapsed ? "route-logo-small" : ""}`}
+                  >
+                    <div className="route-logo"><DownloadOutlined /></div>
+                    {!isCollapsed && (
+                      <div className="route-title">Download our app for Android</div>
+                    )}
+                  </div>
+                </a>
+                <br />
         </div>
         {!isCollapsed && (
           <div className="d-flex justify-center rights-reserved">
@@ -185,26 +186,25 @@ const LayoutOwn = () => {
         )}
       </Sider>
       <Layout>
-        { !isMobile() && 
-        
-        <Header className="header d-flex align-center justify-end">
-          <Dropdown.Button
-            className="dark-dropdown"
-            onClick={copyToClipboard}
-            overlay={menu}
-            icon={<DownOutlined />}
-          >
-            <div className="d-flex align-center">
-              <div className="logo-header donaty-logo-header">
-                <img src={DonatyLogoMedium} alt="logo-medium" />
+        {!isMobile() && (
+          <Header className="header d-flex align-center justify-end">
+            <Dropdown.Button
+              className="dark-dropdown"
+              onClick={copyToClipboard}
+              overlay={menu}
+              icon={<DownOutlined />}
+            >
+              <div className="d-flex align-center">
+                <div className="logo-header donaty-logo-header">
+                  <img src={DonatyLogoMedium} alt="logo-medium" />
+                </div>
+                <div className="wallet-header">
+                  {getEllipsisTxt(user.get("ethAddress"), 4)}
+                </div>
               </div>
-              <div className="wallet-header">
-                {getEllipsisTxt(user.get("ethAddress"), 4)}
-              </div>
-            </div>
-          </Dropdown.Button>
-        </Header>
-        }
+            </Dropdown.Button>
+          </Header>
+        )}
         <Content>
           <div className="max-height">
             <Routes>

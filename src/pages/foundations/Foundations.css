@@ -238,6 +238,13 @@
     margin-bottom: 20px;
     font-size : 12px;
     padding: 5px 0px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.card-foundation-button:hover{
+    border: 1px solid #222831;
+    background-color : #00ADB5 ;
 }
 
 .card-nft-amount > p {
@@ -306,6 +313,10 @@
     gap: 10px;
     justify-content: flex-end;
     margin-bottom: 1.5rem;
+}
+
+.cursor-default{
+    cursor: default !important;
 }
 
 @media only screen and (max-width: 800px) {

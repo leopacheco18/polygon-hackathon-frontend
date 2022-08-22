@@ -45,7 +45,7 @@ const Posts = ({ foundation }) => {
         <React.Fragment key={i}>
           <ModalPost
             handleCancel={() => setIsModalVisible(false)}
-            post={post}
+            post={isModalVisible}
             foundation={foundation}
             isModalVisible={isModalVisible}
           />
@@ -53,7 +53,7 @@ const Posts = ({ foundation }) => {
           <div
             className="w-30 container-nft"
             style={{ borderRadius: "10px" }}
-            onClick={() => setIsModalVisible(true)}
+            onClick={() => setIsModalVisible(post)}
           >
             <div className="w-100">
               <img

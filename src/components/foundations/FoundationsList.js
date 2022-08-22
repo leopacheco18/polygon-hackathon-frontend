@@ -11,7 +11,6 @@ const itemPerPages = 6;
 const FoundationsList = ({ foundationsElements }) => {
   
   const [foundations, setFoundations] = useState([]);
-  const [hoverIndex, setHoverIndex] = useState(-1);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -70,11 +69,8 @@ const filterFoundations = (returnArr = false) => {
       return (
         <div
           key={i}
-          className="w-30 container-nft"
-          onClick={() => redirectToDetailsFoundation(foundation.ethAddress)}
-          onMouseOver={() => setHoverIndex(i)}
-          onMouseOut={() => setHoverIndex(-1)}
-          style={{ borderRadius: hoverIndex === i ? "10px 10px 0 0" : "10px" }}
+          className="w-30 container-nft cursor-default"
+          style={{ borderRadius: "10px" }}
         >
           <div className="w-100">
             <img
@@ -104,7 +100,7 @@ const filterFoundations = (returnArr = false) => {
               </div>
             </div>
             <div className="d-flex justify-center">
-              <button className="card-foundation-button">
+              <button className="card-foundation-button" onClick={() => redirectToDetailsFoundation(foundation.ethAddress)}>
                 More Information
               </button>
             </div>

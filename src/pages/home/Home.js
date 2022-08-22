@@ -26,13 +26,13 @@ const team = [
     img: Leo,
     name: "Leo",
     role: "Frontend Developer",
-    targetLink: "https://tobydev.com",
+    targetLink: "https://www.linkedin.com/in/leonardo-enrique-pacheco-bencomo/",
   },
   {
     img: Crome,
     name: "Crome",
     role: "Smart Contract Developer & Content Creator",
-    targetLink: "https://cromewar.com",
+    targetLink: "https://www.linkedin.com/in/cromewar/",
   },
   {
     img: Wayner,

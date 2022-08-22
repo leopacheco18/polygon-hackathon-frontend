@@ -73,7 +73,6 @@ const AddNft = ({setShowAddNft, showAddNft}) => {
           fetch({
             params: options,
             onSuccess: (r) => {
-              console.log(r)
               if (r) {
                 setLoading(false);
                 toast.success("Your NFT have been minted successfully.");
